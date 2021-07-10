@@ -19,11 +19,6 @@
 
 <body>
 <jsp:include page="common.jsp"></jsp:include>
-<div class="tm-blog-img-container">
-    <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6 col-xl-6 col-xs-offset-1 col-sm-offset-2 col-md-offset-2 col-lg-offset-3 col-xl-offset-3">
-        <h2 class="tm-gold-text tm-title">您好<span class="tm-gold-text">${sessionScope.user.username}</span>！</h2>
-    </div>
-</div>
 <section class="tm-section">
     <div class="container-fluid">
         <div class="row">
