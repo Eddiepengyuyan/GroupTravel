@@ -24,6 +24,8 @@
                     <p class="tm-subtitle">这里的一切都是你的！</p>
                 </div>
             </div>
+            <hr class="tm-margin-t-small col-md-12 col-lg-12 col-xl-12">
+            <h3 class="tm-gold-text">所有团队</h3>
             <div class="row">
                 <c:forEach items="${requestScope.activities}" var="activity" varStatus="vs">
 <%--                    <c:set value="${activity}" scope="session" var="thisActivity"></c:set>--%>
@@ -54,7 +56,7 @@
 
             <div class="row">
                 <div class="col-xs-12 tm-copyright-col">
-                    <p class="tm-copyright-text">Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                    <p class="tm-copyright-text">Copyright &copy; 2021.Drifter All rights reserved.</p>
                 </div>
             </div>
         </div>

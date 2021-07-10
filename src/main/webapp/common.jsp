@@ -9,12 +9,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/templatemo-style.css">
 </head>
-<script type="text/javascript">
-    function addclass() {
-        var obj = document.getElementById("b");
-        obj.classList.add("active");
-    }
-</script>
 <body>
 <div class="tm-header">
     <div class="container-fluid">

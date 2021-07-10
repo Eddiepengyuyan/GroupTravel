@@ -1,5 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%--<%--%>
+<%--    String path = request.getContextPath();--%>
+<%--    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
 
 <!DOCTYPE html>
 <html>
@@ -7,15 +11,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新建活动</title>
+
+    <title></title>
 
     <!-- load stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.min.css">                                      <!-- Bootstrap style -->
     <link rel="stylesheet" href="css/templatemo-style.css">                                   <!-- Templatemo style -->
+
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
 </head>
 
 <body>
     <jsp:include page="common.jsp"></jsp:include>
+
     <div class="tm-contact-img-container">
 
     </div>
@@ -23,15 +34,18 @@
     <section class="tm-section">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-lg-offset-3 col-xl-offset-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+
                     <section>
-                        <h3 class="tm-gold-text tm-form-title">输入编辑后的活动信息</h3>
-                        <form action="index.jsp" method="post" class="tm-contact-form">
+                        <h3 class="tm-gold-text tm-form-title">创建新活动</h3>
+                        <p class="tm-form-description">亲爱的团长，您可以在此选择创建新的活动项目供他人选择。请根据提示填写以下表单，感谢每一位团长的配合。</p>
+
+                        <form action="/transfer" method="post" class="tm-contact-form">
                             <div class="form-group">
                                 <input type="text" id="activity_name" name="activity_name" class="form-control" placeholder="姓名"  required/>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="activity_number" name="activity_number" class="form-control" placeholder="邮箱"  required/>
+                                <input type="email" id="activity_email" name="activity_number" class="form-control" placeholder="邮箱"  required/>
                             </div>
                             <div class="form-group">
                                 <input type="text" id="activity_subject" name="activity_subject" class="form-control" placeholder="活动主题"  required/>
@@ -54,6 +68,41 @@
                         </form>
                     </section>
                 </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-contact-right">
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+                            <c:forEach items="${requestScope.activities}" var="activities" varStatus="vs">
+                                <div class="tm-content-box tm-content-box-contact">
+                                    <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
+                                    <h4 class="tm-margin-b-20 tm-gold-text">${activities.theme}</h4>
+                                    <p class="tm-margin-b-20 tm-p-small">
+                                            ${activities.message} <br>
+                                            ${activities.number}
+                                    </p>
+                                    <input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
+                                    <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
+                                </div>
+                                <br>
+                            </c:forEach>
+
+
+<%--                            <div class="tm-content-box tm-margin-t-mid tm-content-box-contact">--%>
+<%--                                <img src="img/tm-img-310x180-2.jpg" alt="Image" class="tm-margin-b-20 img-fluid">--%>
+<%--                                <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #2</h4>--%>
+<%--                                <p class="tm-margin-b-20 tm-p-small">Aenean cursus tellus mauris, quis--%>
+<%--                                consequat mauris dapibus id. Donec--%>
+<%--                                scelerisque porttitor pharetra</p>--%>
+<%--                                <a href="#" class="tm-btn text-uppercase">Read More</a>--%>
+<%--                            </div>--%>
+
+                        </div>
+                    </div>
+                    <hr class="tm-margin-t-mid">
+                </div>
             </div>
 
         </div>
@@ -68,7 +117,8 @@
             </div>
         </div>
     </footer>
-
+    <%--  导入回传数据jsfiles  --%>
+    <script src="js/return.js"></script>
     <!-- load JS files -->
     <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
     <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h -->
