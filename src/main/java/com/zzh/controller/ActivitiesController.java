@@ -48,15 +48,15 @@ public class ActivitiesController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/index")
-    public String findAll(Model model,HttpServletRequest req,HttpSession session){
-        List<Activities> activities = activitiesService.findAll();
-
-        model.addAttribute("activities", activities);
-        session = req.getSession();
-        session.setAttribute("activities",activities);
-        return "index";
-    }
+//    @RequestMapping("/index")
+//    public String findAll(Model model,HttpServletRequest req,HttpSession session){
+//        List<Activities> activities = activitiesService.findAll();
+//
+//        model.addAttribute("activities", activities);
+//        session = req.getSession();
+//        session.setAttribute("activities",activities);
+//        return "index";
+//    }
 
     @RequestMapping("/contact")
     public String contactinfo(Model model){

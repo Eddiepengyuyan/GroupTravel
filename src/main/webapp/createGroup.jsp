@@ -39,7 +39,7 @@
                     <section>
                         <h3 class="tm-gold-text tm-form-title">创建新活动</h3>
                         <p class="tm-form-description">先生/女士您好，欢迎每一位用户创建活动，加入到团长的大家庭中！</p>
-                        <form action="/transfer" method="post" class="tm-contact-form">
+                        <form action="/createGroup" method="post" class="tm-contact-form">
                             <div class="form-group">
                                 <input type="text" id="group_name" name="group_name" class="form-control" placeholder="团队名称"  required/>
                             </div>

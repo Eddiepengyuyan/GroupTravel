@@ -27,15 +27,15 @@
             <hr class="tm-margin-t-small col-md-12 col-lg-12 col-xl-12">
             <h3 class="tm-gold-text">所有团队</h3>
             <div class="row">
-                <c:forEach items="${requestScope.activities}" var="activity" varStatus="vs">
-<%--                    <c:set value="${activity}" scope="session" var="thisActivity"></c:set>--%>
+                <c:forEach items="${requestScope.teams}" var="teams" varStatus="vs">
+                    <c:set value="${requestScope.leader}" var="leader"></c:set>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
                         <div class="tm-content-box">
                             <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
-                            <h4 class="tm-margin-b-20 tm-gold-text">${activity.theme}</h4>
-                            <p class="tm-margin-b-20">${activity.message} <br>
-                                    ${activity.number}</p>
+                            <h4 class="tm-margin-b-20 tm-gold-text">${teams.name}</h4>
+                            <p class="tm-margin-b-20">${leader.username} <br>
+                                    ${leader.number}</p>
                             <input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
                             <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
                         </div>
