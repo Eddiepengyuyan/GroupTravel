@@ -25,8 +25,31 @@
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="tm-blog-post">
                     <h3 class="tm-gold-text">我的团队
-                        <a href="createAct.jsp"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                        <a href="createGroup"><span class="glyphicon glyphicon-plus-sign"></span></a>
                     </h3><br>
+                        <c:forEach items="${requestScope.myTeam}" var="teams" varStatus="vs">
+                            <c:set value="${requestScope.leader}" var="leader"></c:set>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+
+                                <div class="tm-content-box">
+                                    <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
+                                    <h4 class="tm-margin-b-20 tm-gold-text">团队名：${teams.name}</h4>
+                                    <p class="tm-margin-b-20">团长用户名：${leader.username} <br>
+                                        团长联系方式：${leader.number}</p>
+                                    <input type="hidden" id="teamName_${vs.index}" name="actTheme" value="${teams.name}"/>
+                                    <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">团队详情</a>
+                                </div>
+                                    <%--                        onclick="submit_t(${vs.index})"--%>
+                            </div>
+                        </c:forEach>
+                </div>
+            </div>
+        </div>
+        <hr class="tm-margin-t-small">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                <div class="tm-blog-post">
+                    <h3 class="tm-gold-text">我创建的活动</h3><br>
                     <c:forEach items="${requestScope.creAct}" var="creAct" varStatus="vs">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <div class="tm-content-box">
@@ -37,13 +60,8 @@
                                 <div class="dropdown">
                                     <input type="hidden" id="actTheme_${vs.index}" name="actTheme"
                                            value="${creAct.theme}"/>
-                                    <button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu1"
-                                            data-toggle="dropdown">详情
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="GroupAct.jsp" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>团队详情</a>
-                                        </li>
+                                    <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
+
                                     </ul>
                                 </div>
                             </div>
@@ -65,7 +83,8 @@
                                     <h4 class="tm-margin-b-20 tm-gold-text">${joiAct.theme}</h4>
                                     <p class="tm-margin-b-20">${joiAct.message} <br>
                                             ${joiAct.number}</p>
-                                    <a href="about" class="tm-btn text-uppercase">活动详情</a>
+                                    <input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
+                                    <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
                                 </div>
                             </div>
                         </c:forEach>

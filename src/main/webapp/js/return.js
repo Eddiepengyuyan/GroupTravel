@@ -5,6 +5,20 @@ function submit_t(vs){
     window.location = url;
 }
 
+function submit_team(vs){
+    var team = document.getElementById("teamName_"+vs).value;
+    var url = "GroupAbout";
+    url += "?teamName="+team;
+    window.location = url;
+}
+
+// function submit_g(vs){
+//     var theme = document.getElementById("teamName_"+vs).value;
+//     var url = "";
+//     url += "?actTheme="+theme;
+//     window.location = url;
+// }
+
 function delete_t(vs){
     var theme = document.getElementById("actTheme_"+vs).value;
     var url = "deleteAct";

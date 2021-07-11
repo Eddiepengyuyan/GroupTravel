@@ -21,4 +21,9 @@ public class TeamService implements ITeamService{
     public void addTeam(int leaderId, String name, String message) {
         iTeamMapper.addTeam(leaderId,name,message);
     }
+
+    @Override
+    public List<Teams> findByLeaderId(int uid) {
+        return iTeamMapper.findByLeaderId(uid);
+    }
 }

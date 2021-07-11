@@ -66,4 +66,9 @@ public class ActivitiesService implements IActivitiesService {
         iActivitiesMapper.deleteById(actid);
     }
 
+    @Override
+    public List<Activities> findActByIds(List<Integer> joiActId) {
+        return iActivitiesMapper.findActByIds(joiActId);
+    }
+
 }

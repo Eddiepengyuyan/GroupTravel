@@ -24,4 +24,6 @@ public interface IActivitiesService {
     Activities findByTheme(String theme);
 
     void deleteById(int actid);
+
+    List<Activities> findActByIds(List<Integer> joiActId);
 }

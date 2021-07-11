@@ -1,8 +1,10 @@
 package com.zzh.controller;
 
 import com.zzh.domain.Activities;
+import com.zzh.domain.Teams;
 import com.zzh.domain.User;
 import com.zzh.service.ActivitiesService;
+import com.zzh.service.TeamService;
 import com.zzh.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,8 @@ public class UserController{
     private UserService userService;
     @Resource
     private ActivitiesService activitiesService;
+    @Resource
+    private TeamService teamService;
 
     public void showActivities(Model model){
         List<Activities> activities = activitiesService.findAll();
@@ -91,16 +94,37 @@ public class UserController{
         session = req.getSession();
         User user = (User)session.getAttribute("thisUser");
         //2.通过用户信息查找数据库中的创建活动和参加活动
+
+        //用户姓名
         String uName = user.getUsername();
+        //用户id
         int uid = userService.findIdByName(uName);
+        //创建的团队
+        List<Teams> myTeam = teamService.findByLeaderId(uid);
+        //创建的活动
         List<Activities> creAct = activitiesService.findByLid(uid);
+        //加入的活动的id
         List<Integer> joiActId = activitiesService.findActidByUid(uid);
-        List<Activities> joiAct = new ArrayList<Activities>();
-        for (int actId:joiActId){
-            joiAct.add(activitiesService.findActById(actId));
+        if(joiActId.size()==0){
+            joiActId.add(-1);
         }
+        //加入的活动
+//        List<Activities> joiAct = new ArrayList<Activities>();
+//        for (int actId:joiActId){
+//            joiAct.add(activitiesService.findActById(actId));
+//        }
+        List<Activities> joiAct = activitiesService.findActByIds(joiActId);
+
+        //团长名字
+        int leaderId = -1;
+        if(myTeam.size()!=0){
+            leaderId = myTeam.get(0).getLeaderid();
+        }
+        User leader = userService.findById(leaderId);
 
         //3.将活动存入session传给前端
+        model.addAttribute("myTeam",myTeam);
+        model.addAttribute("leader",leader);
         model.addAttribute("creAct",creAct);
         model.addAttribute("joiAct",joiAct);
 

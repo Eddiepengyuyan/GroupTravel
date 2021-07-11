@@ -55,7 +55,7 @@
 					<a href="#" class="close" data-dismiss="alert">
 						&times;
 					</a>
-					<strong>警告！</strong>请<a href="login.jsp">登录</a>后再参加活动！
+					<strong>警告！</strong>请<a href="GroupAbout">加入团队</a>后再参加活动！
 				</div>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">

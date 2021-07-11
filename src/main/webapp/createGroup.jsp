@@ -37,14 +37,14 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
 
                     <section>
-                        <h3 class="tm-gold-text tm-form-title">创建新活动</h3>
-                        <p class="tm-form-description">先生/女士您好，欢迎每一位用户创建活动，加入到团长的大家庭中！</p>
-                        <form action="/createGroup" method="post" class="tm-contact-form">
+                        <h3 class="tm-gold-text tm-form-title">创建新团队</h3>
+                        <p class="tm-form-description">先生/女士您好，欢迎每一位用户创建团队，加入到团长的大家庭中！</p>
+                        <form action="/createGroupTransfer" method="post" class="tm-contact-form">
                             <div class="form-group">
                                 <input type="text" id="group_name" name="group_name" class="form-control" placeholder="团队名称"  required/>
                             </div>
                             <div class="form-group">
-                                <input type="number" id="group_leader" name="group_leader" class="form-control" placeholder="团长姓名"  required/>
+                                <input type="text" id="group_leader" name="group_leader" class="form-control" placeholder="团长姓名"  required/>
                             </div>
                             <div class="form-group">
                                 <textarea id="group_info" name="group_info" class="form-control" rows="6" placeholder="团队介绍" required></textarea>

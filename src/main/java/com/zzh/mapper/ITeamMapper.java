@@ -17,4 +17,7 @@ public interface ITeamMapper {
     void addTeam(@Param("leaderid")int leaderId,
                  @Param("name") String name,
                  @Param("message") String message);
+
+    @Select("select * from team where leaderid = #{uid}")
+    List<Teams> findByLeaderId(int uid);
 }

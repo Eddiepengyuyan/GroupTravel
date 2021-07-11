@@ -33,11 +33,11 @@
 
                         <div class="tm-content-box">
                             <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
-                            <h4 class="tm-margin-b-20 tm-gold-text">${teams.name}</h4>
-                            <p class="tm-margin-b-20">${leader.username} <br>
-                                    ${leader.number}</p>
-                            <input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
-                            <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
+                            <h4 class="tm-margin-b-20 tm-gold-text">团队名：${teams.name}</h4>
+                            <p class="tm-margin-b-20">团长用户名：${leader.username} <br>
+                                    团长联系方式：${leader.number}</p>
+                            <input type="hidden" id="teamName_${vs.index}" name="teamName" value="${teams.name}"/>
+                            <a href="javascript:submit_team(${vs.index})" class="tm-btn text-uppercase">团队详情</a>
                         </div>
 <%--                        onclick="submit_t(${vs.index})"--%>
                     </div>

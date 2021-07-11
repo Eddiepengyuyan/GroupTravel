@@ -41,7 +41,7 @@
 					<a href="#" class="close" data-dismiss="alert">
 						&times;
 					</a>
-					<strong>警告！</strong>请<a href="login.jsp">登录</a>后再参加活动！
+					<strong>警告！</strong>请<a href="login.jsp">登录</a>后再加入团队！
 				</div>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
@@ -65,13 +65,11 @@
 						<p class="tm-margin-b-20">${activity.message} <br>
 								${activity.number}</p>
 						<input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
-						<c:if test="${not empty sessionScope.user}">
-							<c:set var="thisAcitvity" value="${sessionScope.thisActivity}" ></c:set>
-							<c:set value="${sessionScope.user}" var="thisUser"></c:set>
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-								<a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
-							</div>
-						</c:if>
+						<c:set var="thisAcitvity" value="${sessionScope.thisActivity}" ></c:set>
+						<c:set value="${sessionScope.user}" var="thisUser"></c:set>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+							<a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
+						</div>
 					</div>
 				</div>
 			</c:forEach>

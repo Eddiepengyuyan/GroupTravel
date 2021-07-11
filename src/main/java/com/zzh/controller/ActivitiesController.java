@@ -149,10 +149,11 @@ public class ActivitiesController {
         int uid = userService.findIdByName(uName);
         List<Activities> creAct = activitiesService.findByLid(uid);
         List<Integer> joiActId = activitiesService.findActidByUid(uid);
-        List<Activities> joiAct = new ArrayList<Activities>();
-        for (int actId:joiActId){
-            joiAct.add(activitiesService.findActById(actId));
-        }
+//        List<Activities> joiAct = new ArrayList<Activities>();
+//        for (int actId:joiActId){
+//            joiAct.add(activitiesService.findActById(actId));
+//        }
+        List<Activities> joiAct = activitiesService.findActByIds(joiActId);
 
         //3.将活动存入session传给前端
         model.addAttribute("creAct",creAct);

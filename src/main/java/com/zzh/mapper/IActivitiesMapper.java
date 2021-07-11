@@ -25,7 +25,7 @@ public interface IActivitiesMapper {
     @Select("select * from activities where leaderid=#{leaderid}")
     List<Activities> findByLid(int lid);
 
-    @Select("select * from act_user where userid=#{uid}")
+    @Select("select activityid from act_user where userid=#{uid}")
     List<Integer> findActidByUid(int uid);
 
     @Select("select * from activities where id=#{actId}")
@@ -36,4 +36,12 @@ public interface IActivitiesMapper {
 
     @Delete("delete from activities where id=#{actid}")
     void deleteById(int actid);
+
+    @Select("<script>" +
+            "select * from activities where id in" +
+            "<foreach collection='list' item='item' index='index' open='(' separator=',' close=')' >" +
+            "#{item}" +
+            "</foreach>" +
+            "</script>")
+    List<Activities> findActByIds(List<Integer> joiActId);
 }

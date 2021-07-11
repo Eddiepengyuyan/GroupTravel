@@ -22,6 +22,11 @@ public class TeamController {
     private UserService userService;
 
     @RequestMapping("/createGroup")
+    public String createGroupMapper(){
+        return "createGroup";
+    }
+
+    @RequestMapping("/createGroupTransfer")
     public String findAllTeams(@RequestParam("group_name")String name,
                                @RequestParam("group_leader")String leaderName,
                                @RequestParam("group_info")String message,
@@ -36,12 +41,24 @@ public class TeamController {
     @RequestMapping("/index")
     public String findAll(Model model, HttpServletRequest req, HttpSession session){
         List<Teams> teams = teamService.findAllTeams();
-        int leaderId = teams.get(0).getLeaderid();
+        int leaderId = -1;
+        if(teams.size()!=0){
+            leaderId = teams.get(0).getLeaderid();
+        }
         User leader = userService.findById(leaderId);
-        String leaderName = leader.getUsername();
+
         model.addAttribute("teams",teams);
         model.addAttribute("leader",leader);
         return "index";
+    }
+
+    @RequestMapping("/GroupAbout")
+    public String GroupAbout(Model model,
+                             HttpServletRequest request,
+                             HttpSession session,
+                             @RequestParam(value="teamName",required = false)String teamName){
+
+        return "GroupAbout";
     }
 
 }
