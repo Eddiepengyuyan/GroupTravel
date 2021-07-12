@@ -5,10 +5,17 @@ function submit_t(vs){
     window.location = url;
 }
 
-function submit_team(vs){
-    var team = document.getElementById("teamName_"+vs).value;
+function submit_team(vs) {
+    var team = document.getElementById("teamName_" + vs).value;
     var url = "GroupAbout";
-    url += "?teamName="+team;
+    url += "?teamName=" + team;
+    window.location = url;
+}
+
+function sendMail(){
+    // var team = document.getElementById("teamName_"+vs).value;
+    var url = "Email";
+    // url += "?teamName="+team;
     window.location = url;
 }
 

@@ -55,7 +55,7 @@
 			</c:if>
 		</div>
 		<hr class="tm-margin-t-small col-md-12 col-lg-12 col-xl-12">
-		<h3 class="tm-gold-text">其他活动</h3>
+		<h3 class="tm-gold-text">团队活动</h3>
 		<div class="row tm-margin-t-mid">
 			<c:forEach items="${requestScope.activities}" var="activity" varStatus="vs">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
