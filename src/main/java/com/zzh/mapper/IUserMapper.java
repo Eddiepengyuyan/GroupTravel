@@ -32,4 +32,7 @@ public interface IUserMapper {
 
     @Insert("insert into act_user (activityid,userid) values (#{actid},#{uid})")
     void addUser(@Param("actid")int actid,@Param("uid") int uid);
+
+    @Select("select * from user where id = #{leaderid}")
+    List<User> findByUid(int leaderid);
 }

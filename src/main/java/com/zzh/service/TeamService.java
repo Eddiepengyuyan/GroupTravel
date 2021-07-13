@@ -26,4 +26,9 @@ public class TeamService implements ITeamService{
     public List<Teams> findByLeaderId(int uid) {
         return iTeamMapper.findByLeaderId(uid);
     }
+
+    @Override
+    public List<Teams> findAllTeamsAndLeaders() {
+        return iTeamMapper.findAllTeamsAndLeaders();
+    }
 }

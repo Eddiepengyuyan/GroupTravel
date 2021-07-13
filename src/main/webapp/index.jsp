@@ -28,7 +28,7 @@
             <h3 class="tm-gold-text">所有团队</h3>
             <div class="row">
                 <c:forEach items="${requestScope.teams}" var="teams" varStatus="vs">
-                    <c:set value="${requestScope.leader}" var="leader"></c:set>
+                    <c:set value="${teams.user[0]}" var="leader"></c:set>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
                         <div class="tm-content-box">
