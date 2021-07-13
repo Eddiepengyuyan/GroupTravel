@@ -12,4 +12,10 @@ public interface ITeamService {
     List<Teams> findByLeaderId(int uid);
 
     List<Teams> findAllTeamsAndLeaders();
+
+    Teams findByName(String name);
+
+    void addUser(int teamid, int userid);
+
+    Teams findById(int teamid);
 }

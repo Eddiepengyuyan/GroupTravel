@@ -15,4 +15,5 @@ public interface IUserService {
     List<Integer> findIdByActid(int actid);
 
     void addUser(int actid, int uid);
+
 }

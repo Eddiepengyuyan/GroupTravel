@@ -4,10 +4,17 @@ function submit_t(vs){
     url += "?actTheme="+theme;
     window.location = url;
 }
-
+//主页中的”团队详情“的跳转
 function submit_team(vs) {
     var team = document.getElementById("teamName_" + vs).value;
     var url = "GroupAbout";
+    url += "?teamName=" + team;
+    window.location = url;
+}
+//个人主页下”团队详情“的跳转
+function submit_myteam(vs) {
+    var team = document.getElementById("teamName_" + vs).value;
+    var url = "GroupAct";
     url += "?teamName=" + team;
     window.location = url;
 }
@@ -43,5 +50,18 @@ function addAct_t(){
     var url = "aboutAdd";
     // url += "?actTheme="+theme+"&actid"+actid+"&userid"+uid;
     url += "?actid="+actid+"&userid="+uid;
+    window.location=url;
+}
+
+function addTeam_t(){
+    var teamid = document.getElementById("addUserteam").value;
+    // alert(actid);
+    var uid = document.getElementById("addUseruser").value;
+    // alert(uid);
+    // var theme = document.getElementById("thisTheme").value;
+    // alert(theme);
+    var url = "GroupaboutAdd";
+    // url += "?actTheme="+theme+"&actid"+actid+"&userid"+uid;
+    url += "?teamid="+teamid+"&userid="+uid;
     window.location=url;
 }

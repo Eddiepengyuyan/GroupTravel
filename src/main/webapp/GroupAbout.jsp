@@ -27,13 +27,13 @@
 	<div class="container-fluid">
 		<div class="row tm-2-rows-sm-swap">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
-				<c:set var="thisAcitvity" value="${sessionScope.thisActivity}" ></c:set>
-					<c:set var="thisleader" value="${sessionScope.leadername}"></c:set>
-						<h3 class="tm-gold-text">${thisAcitvity.theme}</h3>
-						<p>${thisAcitvity.message}</p>
-						<p>团长：${thisleader}</p>
-						<p>联系邮箱：${thisAcitvity.number}</p>
-						<p>团队信息：${thisAcitvity.date}</p>
+				<c:set var="this_team" value="${requestScope.thisTeam}" ></c:set>
+					<c:set var="this_leader" value="${requestScope.leader}"></c:set>
+						<h3 class="tm-gold-text">${this_team.name}</h3>
+<%--						<p>${thisTeam.message}</p>--%>
+						<p>团长：${this_leader.username}</p>
+						<p>联系邮箱：${this_leader.number}</p>
+						<p>团队信息：${this_team.message}</p>
 			</div>
 
 			<c:if test="${empty sessionScope.user}">
@@ -45,19 +45,19 @@
 				</div>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
-				<c:set var="thisAcitvity" value="${sessionScope.thisActivity}" ></c:set>
+				<c:set var="thisTeam" value="${requestScope.thisTeam}" ></c:set>
 				<c:set value="${sessionScope.user}" var="thisUser"></c:set>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-					<input type="hidden" id="addUseract" value="${thisAcitvity.id}">
+					<input type="hidden" id="addUserteam" value="${thisTeam.id}">
 					<input type="hidden" id="addUseruser" value="${thisUser.id}">
-					<a href="javascript:addAct_t()" class="tm-btn text-uppercase">报名团队</a>
+					<a href="javascript:addTeam_t()" class="tm-btn text-uppercase">报名团队</a>
 				</div>
 			</c:if>
 		</div>
 		<hr class="tm-margin-t-small col-md-12 col-lg-12 col-xl-12">
 		<h3 class="tm-gold-text">团队活动</h3>
 		<div class="row tm-margin-t-mid">
-			<c:forEach items="${requestScope.activities}" var="activity" varStatus="vs">
+			<c:forEach items="${requestScope.thisActivities}" var="activity" varStatus="vs">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 					<div class="tm-content-box">
 						<img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">

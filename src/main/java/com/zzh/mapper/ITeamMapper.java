@@ -38,4 +38,12 @@ public interface ITeamMapper {
     })
     List<Teams> findAllTeamsAndLeaders();
 
+    @Select("select * from team where name=#{name}")
+    Teams findByName(String name);
+
+    @Select("select * from team where id=#{id}")
+    Teams findById(int id);
+
+    @Insert("insert into team_user(teamid,uid) values(#{teamid},#{userid}) ")
+    void addUser(@Param("teamid") int teamid,@Param("userid") int userid);
 }

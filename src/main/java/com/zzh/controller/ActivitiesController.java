@@ -111,7 +111,6 @@ public class ActivitiesController {
                           HttpServletRequest request,
                           HttpSession session,
                           @RequestParam(value="actid")int actid,
-//                          @RequestParam(value = "actTheme",required = false)String theme,
                           @RequestParam(value = "userid")int userid
                           ){
 //        aboutAct(model,session,theme,request);

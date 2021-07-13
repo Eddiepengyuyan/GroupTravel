@@ -37,7 +37,7 @@
                                     <p class="tm-margin-b-20">团长用户名：${leader.username} <br>
                                         团长联系方式：${leader.number}</p>
                                     <input type="hidden" id="teamName_${vs.index}" name="actTheme" value="${teams.name}"/>
-                                    <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">团队详情</a>
+                                    <a href="javascript:submit_myteam(${vs.index})" class="tm-btn text-uppercase">团队详情</a>
                                 </div>
                                     <%--                        onclick="submit_t(${vs.index})"--%>
                             </div>

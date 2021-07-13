@@ -1,6 +1,9 @@
 package com.zzh.controller;
 
+import com.zzh.domain.Activities;
 import com.zzh.domain.Teams;
+import com.zzh.domain.User;
+import com.zzh.service.ActivitiesService;
 import com.zzh.service.TeamService;
 import com.zzh.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,8 @@ public class TeamController {
     private TeamService teamService;
     @Resource
     private UserService userService;
+    @Resource
+    private ActivitiesService activitiesService;
 
     @RequestMapping("/createGroup")
     public String createGroupMapper(){
@@ -56,7 +61,37 @@ public class TeamController {
                              HttpServletRequest request,
                              HttpSession session,
                              @RequestParam(value="teamName",required = false)String teamName){
+        Teams thisTeam = teamService.findByName(teamName);
+        int leaderId = thisTeam.getLeaderid();
+        User leader = userService.findById(leaderId);
+        model.addAttribute("thisTeam",thisTeam);
+        model.addAttribute("leader",leader);
+        List<Activities> thisActivities = activitiesService.findByLid(leaderId);
+        model.addAttribute("thisActivities",thisActivities);
+        return "GroupAbout";
+    }
 
+    @RequestMapping("/GroupAct")
+    public String GroupAct(Model model,
+                             HttpServletRequest request,
+                             HttpSession session,
+                             @RequestParam(value="teamName",required = false)String teamName){
+
+
+        return "GroupAct";
+    }
+
+    @RequestMapping("/GroupaboutAdd")
+    public String GroupAboutAdd(Model model,
+                                HttpServletRequest request,
+                                HttpSession session,
+                                @RequestParam(value="teamid")int teamid,
+                                @RequestParam(value = "userid")int userid){
+        teamService.addUser(teamid,userid);
+        Teams thisTeam = teamService.findById(teamid);
+        int leaderId = thisTeam.getLeaderid();
+        List<Activities> thisActivities = activitiesService.findByLid(leaderId);
+        model.addAttribute("thisActivities",thisActivities);
         return "GroupAbout";
     }
 
