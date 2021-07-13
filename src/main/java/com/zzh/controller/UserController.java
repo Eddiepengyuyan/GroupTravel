@@ -28,8 +28,8 @@ public class UserController{
     private TeamService teamService;
 
     public void showActivities(Model model){
-        List<Activities> activities = activitiesService.findAll();
-        model.addAttribute("activities", activities);
+        List<Teams> teams = teamService.findAllTeamsAndLeaders();
+        model.addAttribute("teams", teams);
     }
 
     @RequestMapping("/login")
