@@ -3,6 +3,7 @@ package com.zzh.domain;
 import java.util.List;
 
 public class Teams {
+    int id;
     private int leaderid;
     private String name;
     private String message;
@@ -10,6 +11,14 @@ public class Teams {
     private List<User> user;
 
     public Teams() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getLeaderid() {
@@ -47,7 +56,8 @@ public class Teams {
     @Override
     public String toString() {
         return "Teams{" +
-                "leaderid=" + leaderid +
+                "id=" + id +
+                ", leaderid=" + leaderid +
                 ", name='" + name + '\'' +
                 ", message='" + message + '\'' +
                 ", user=" + user +

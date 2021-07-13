@@ -35,6 +35,14 @@
 						<p>联系邮箱：${this_leader.number}</p>
 						<p>团队信息：${this_team.message}</p>
 			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 tm-2-rows-sm-down-2">
+				<ul class="nav">
+					<h3 class="tm-gold-text">参加人员</h3>
+					<c:forEach items="${requestScope.users}" var="user" varStatus="vs">
+						<li>${user.realname}</li>
+					</c:forEach>
+				</ul>
+			</div>
 
 			<c:if test="${empty sessionScope.user}">
 				<div class="alert alert-warning col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-md-offset-4 col-lg-offset-4 col-xl-offset-4">

@@ -16,4 +16,5 @@ public interface IUserService {
 
     void addUser(int actid, int uid);
 
+    List<User> findByids(List<Integer> userIds);
 }

@@ -37,8 +37,15 @@ public class TeamController {
                                Model model){
 //        List<Teams> teams = teamService.findAllTeams();
 //        User leader = userService.findByUsername(leaderName);
+        //通过团长姓名查找团长id
         int leaderId = userService.findIdByName(leaderName);
+//        在team表中添加一条记录
         teamService.addTeam(leaderId,name,message);
+        //获取team的id
+        Teams team = teamService.findByName(name);
+        int teamId = team.getId();
+        //        在team_user表中添加一条记录
+        teamService.addUser(teamId,leaderId);
         return "personalCenter";
     }
 
@@ -76,6 +83,29 @@ public class TeamController {
                              HttpServletRequest request,
                              HttpSession session,
                              @RequestParam(value="teamName",required = false)String teamName){
+//1.将用户信息传入
+        session = request.getSession();
+        User user = (User)session.getAttribute("thisUser");
+        //2.通过用户信息查找数据库中的创建活动和参加活动
+
+        //用户姓名
+        String uName = user.getUsername();
+        //用户id
+        int uid = userService.findIdByName(uName);
+        //创建的活动
+        List<Activities> creAct = activitiesService.findByLid(uid);
+        //加入的活动的id
+        List<Integer> joiActId = activitiesService.findActidByUid(uid);
+        if(joiActId.size()==0){
+            joiActId.add(-1);
+        }
+        //加入的活动
+        List<Activities> joiAct = activitiesService.findActByIds(joiActId);
+
+
+        //3.将活动存入session传给前端
+        model.addAttribute("creAct",creAct);
+        model.addAttribute("joiAct",joiAct);
 
 
         return "GroupAct";
@@ -87,11 +117,25 @@ public class TeamController {
                                 HttpSession session,
                                 @RequestParam(value="teamid")int teamid,
                                 @RequestParam(value = "userid")int userid){
+        //在team_user表中添加一条数据
         teamService.addUser(teamid,userid);
+        //找到当前团队
         Teams thisTeam = teamService.findById(teamid);
+        //获取团长id
         int leaderId = thisTeam.getLeaderid();
+        //找到团长信息
+        User leader = userService.findById(leaderId);
+        //当前团队的信息
+        model.addAttribute("thisTeam",thisTeam);
+        //当前团队团长的信息
+        model.addAttribute("leader",leader);
+        //当前团队的活动
         List<Activities> thisActivities = activitiesService.findByLid(leaderId);
         model.addAttribute("thisActivities",thisActivities);
+        //当前团队的成员
+        List<Integer> userIds = teamService.findUserIds(thisTeam.getId());
+        List<User> this_user = userService.findByids(userIds);
+        model.addAttribute("users",this_user);
         return "GroupAbout";
     }
 

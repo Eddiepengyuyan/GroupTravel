@@ -46,4 +46,10 @@ public class UserService implements IUserService{
     public void addUser(int actid, int uid) {
         iUserMapper.addUser(actid,uid);
     }
+
+    @Override
+    public List<User> findByids(List<Integer> userIds) {
+        return iUserMapper.findByIds(userIds);
+    }
+
 }

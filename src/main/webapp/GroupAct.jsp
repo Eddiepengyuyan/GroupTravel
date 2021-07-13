@@ -92,9 +92,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="tm-blog-post">
-                    <h3 class="tm-gold-text">已结束的活动
-                        <a href="createAct.jsp"><span class="glyphicon glyphicon-plus-sign"></span></a>
-                    </h3><br>
+                    <h3 class="tm-gold-text">已结束的活动</h3><br>
                     <c:forEach items="${requestScope.creAct}" var="creAct" varStatus="vs">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <div class="tm-content-box">
@@ -102,8 +100,25 @@
                                 <h4 class="tm-margin-b-20 tm-gold-text">${creAct.theme}</h4>
                                 <p class="tm-margin-b-20">${creAct.message} <br>
                                         ${creAct.number}</p>
-                                <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
-                                <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">打印活动报告</a>
+                                <div class="dropdown">
+                                    <input type="hidden" id="actTheme_${vs.index}" name="actTheme"
+                                           value="${creAct.theme}"/>
+                                    <button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu2"
+                                            data-toggle="dropdown">详情
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text">活动详情</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text">打印活动报告</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <button type="button" class="tm-gold-text" onclick="sendMail()">发送通知邮件</button>
+                                        </li>
+
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </c:forEach>

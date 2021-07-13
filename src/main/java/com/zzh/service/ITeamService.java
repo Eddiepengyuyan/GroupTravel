@@ -18,4 +18,6 @@ public interface ITeamService {
     void addUser(int teamid, int userid);
 
     Teams findById(int teamid);
+
+    List<Integer> findUserIds(int teamId);
 }

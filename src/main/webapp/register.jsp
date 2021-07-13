@@ -56,13 +56,13 @@
             alert("用户名输入不符合要求"+name);
             return false;
         }
-        var tel=document.getElementById("number").value;
-        var patrn_tel=/^[1][0-9]{10}$/;   //tel:13562276780
-        if(tel!=null&&!patrn_tel.exec(tel))
-        {
-            alert("联系电话格式错误");
-            return false;
-        }
+        // var tel=document.getElementById("number").value;
+        // var patrn_tel=/^[1][0-9]{10}$/;   //tel:13562276780
+        // if(tel!=null&&!patrn_tel.exec(tel))
+        // {
+        //     alert("联系电话格式错误");
+        //     return false;
+        // }
         var name=document.getElementById("realname").value;
         var patrn_name = /[^\x00-\x80]/;
         if(name!=null&&!patrn_name.exec(name))

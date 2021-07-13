@@ -2,8 +2,10 @@ package com.zzh;
 
 
 import com.zzh.domain.Teams;
+import com.zzh.domain.User;
 import com.zzh.mapper.IStudentsMapper;
 import com.zzh.mapper.ITeamMapper;
+import com.zzh.mapper.IUserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class MybatisTest {
     @Autowired
     private ITeamMapper iTeamMapper;
 
+    @Autowired
+    private IUserMapper iUserMapper;
+
     @Test
     public void test() {
 //        List<Students> stus = iStudentsMapper.findAll();
@@ -30,5 +35,12 @@ public class MybatisTest {
         System.out.println(teams);
 //        .get(0).getUser().get(0).getUsername()
 
+    }
+
+    @Test
+    public void test1(){
+        List<Integer> userIds = iTeamMapper.findUserIds(1);
+        List<User> this_user = iUserMapper.findByIds(userIds);
+        System.out.println(this_user);
     }
 }

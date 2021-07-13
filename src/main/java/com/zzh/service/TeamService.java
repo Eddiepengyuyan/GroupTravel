@@ -46,4 +46,9 @@ public class TeamService implements ITeamService{
     public Teams findById(int teamid) {
         return iTeamMapper.findById(teamid);
     }
+
+    @Override
+    public List<Integer> findUserIds(int teamId) {
+        return iTeamMapper.findUserIds(teamId);
+    }
 }
