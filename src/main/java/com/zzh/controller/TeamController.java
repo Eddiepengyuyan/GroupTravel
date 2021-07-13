@@ -1,7 +1,6 @@
 package com.zzh.controller;
 
 import com.zzh.domain.Teams;
-import com.zzh.domain.User;
 import com.zzh.service.TeamService;
 import com.zzh.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -40,15 +39,15 @@ public class TeamController {
 
     @RequestMapping("/index")
     public String findAll(Model model, HttpServletRequest req, HttpSession session){
-        List<Teams> teams = teamService.findAllTeams();
-        int leaderId = -1;
-        if(teams.size()!=0){
-            leaderId = teams.get(0).getLeaderid();
-        }
-        User leader = userService.findById(leaderId);
+        List<Teams> teams = teamService.findAllTeamsAndLeaders();
+//        int leaderId = -1;
+//        if(teams.size()!=0){
+//            leaderId = teams.get(0).getLeaderid();
+//        }
+//        User leader = userService.findById(leaderId);
 
         model.addAttribute("teams",teams);
-        model.addAttribute("leader",leader);
+//        model.addAttribute("leader",leader);
         return "index";
     }
 

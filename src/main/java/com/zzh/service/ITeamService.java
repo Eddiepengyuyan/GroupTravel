@@ -10,4 +10,6 @@ public interface ITeamService {
     void addTeam(int leaderId, String name, String message);
 
     List<Teams> findByLeaderId(int uid);
+
+    List<Teams> findAllTeamsAndLeaders();
 }
