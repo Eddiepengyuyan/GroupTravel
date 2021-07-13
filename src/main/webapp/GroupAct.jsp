@@ -58,7 +58,7 @@
                                             <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
+                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -106,17 +106,16 @@
                                     <button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu2"
                                             data-toggle="dropdown">详情
                                     </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                                         <li role="presentation">
-                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text">活动详情</a>
+                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text">打印活动报告</a>
+                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text"><i class="glyphicon glyphicon-align-left"></i>生成活动报告</a>
                                         </li>
                                         <li role="presentation">
-                                            <button type="button" class="tm-gold-text" onclick="sendMail()">发送通知邮件</button>
+                                            <a href="/Email" class="tm-gold-text "><i class="glyphicon glyphicon-envelope"></i>发送通知邮件</a>
                                         </li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -127,7 +126,6 @@
         </div>
     </div>
 </section>
-
 <footer class="tm-footer">
     <div class="container-fluid">
         <div class="row">
@@ -149,6 +147,5 @@
         alert("操作成功！")
     }
 </script>
-
 </body>
 </html>

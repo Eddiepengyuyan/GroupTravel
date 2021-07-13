@@ -77,13 +77,13 @@
                                             <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" onclick="delete_t(${vs.index})"><i class="glyphicon glyphicon-trash"></i>删除</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
+                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
+                                            <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
+                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -117,7 +117,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="tm-blog-post">
-                    <h3 class="tm-gold-text">我报名的活动</h3><br>
+                    <h3 class="tm-gold-text">我参加的活动</h3><br>
                     <c:if test="${not empty requestScope.joiAct}">
                         <c:forEach items="${requestScope.joiAct}" var="joiAct" varStatus="vs">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
@@ -127,7 +127,19 @@
                                     <p class="tm-margin-b-20">${joiAct.message} <br>
                                             ${joiAct.number}</p>
                                     <input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
-                                    <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
+                                    <div class="dropdown">
+                                        <button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu2"
+                                                data-toggle="dropdown">详情
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                            <li role="presentation">
+                                                <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text text-uppercase" onclick=""><i class="glyphicon glyphicon-credit-card"></i>缴纳费用</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </c:forEach>

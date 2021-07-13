@@ -20,7 +20,7 @@
 <body>
 <jsp:include page="common.jsp"></jsp:include>
 <div class="tm-about-img-container">
-	
+
 </div>
 
 <section class="tm-section">
@@ -82,7 +82,9 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="myModalLabel">缴费详情</h4>
 					</div>
-					<div class="modal-body">您目前需要缴纳的费用为：${aa}</div>
+					<div class="modal-body">活动人均费用为：${aa}元</div>
+					<div class="modal-body">额外活动费用为：${aa}元</div>
+					<div class="modal-body">您目前需要缴纳的费用为：${aa}元</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 						<button type="button" class="tm-btn text-uppercase" data-dismiss="modal">确认</button>

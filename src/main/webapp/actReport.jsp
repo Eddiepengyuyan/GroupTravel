@@ -24,17 +24,24 @@
 
 <section class="tm-section">
     <div class="container-fluid">
-        <div class="row tm-2-rows-sm-swap">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
+        <div class="row tm-2-rows-sm-swap">            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3" style="margin-bottom: 10px">
+                <ul class="nav">
+                    <h3 class="tm-gold-text">活动列表</h3>
+                    <c:forEach items="${requestScope.users}" var="user" varStatus="vs">
+                        <li><a href="${sss}">${sss}</a></li>
+                    </c:forEach>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9 col-md-offset-5 col-lg-offset-5 col-xl-offset-5">
                 <c:set var="thisAcitvity" value="${sessionScope.thisActivity}"></c:set>
                 <c:set var="thisleader" value="${sessionScope.leadername}"></c:set>
-                <h3 class="tm-gold-text">${thisAcitvity.theme}</h3>
-                <p>${thisAcitvity.message}</p>
-                <p>团长：${thisleader}</p>
-                <p>联系电话：${thisAcitvity.number}</p>
-                <p>活动时间：${thisAcitvity.date}</p>
-                <p>活动起点：${thisAcitvity.start}</p>
-                <p>活动费用(元)：${thisAcitvity.fee}</p>
+                <h2 class="tm-gold-text tm-title">活动报告</h2>
+                <h3 class="tm-gold-text">活动名称：${thisAcitvity.theme}</h3>
+                <p>活动团长：${thisleader}</p>
+                <p>活动总消费(元)：${thisAcitvity.fee}</p>
+                <p>活动总人数：${thisAcitvity.fee}</p>
+                <p>人均缴费：${thisAcitvity.fee}</p>
+                <p>已缴费人数：${thisAcitvity.fee}</p>
             </div>
         </div>
     </div>

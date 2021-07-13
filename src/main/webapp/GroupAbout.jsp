@@ -26,7 +26,7 @@
 <section class="tm-section">
 	<div class="container-fluid">
 		<div class="row tm-2-rows-sm-swap">
-			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
 				<c:set var="this_team" value="${requestScope.thisTeam}" ></c:set>
 					<c:set var="this_leader" value="${requestScope.leader}"></c:set>
 						<h3 class="tm-gold-text">${this_team.name}</h3>
