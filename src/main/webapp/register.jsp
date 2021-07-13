@@ -22,7 +22,7 @@
             <br>
             <div class="input-group">
                 <span class="input-group-addon" style="background-color: white; border-right: none; border-bottom: solid #cc9900;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" id="number" name="number" placeholder="联系电话" class="form-control" style="border-bottom: solid #cc9900; border-left: none;"/>
+                <input type="email" id="number" name="number" placeholder="联系邮箱" class="form-control" style="border-bottom: solid #cc9900; border-left: none;"/>
             </div>
             <br>
             <div class="input-group">

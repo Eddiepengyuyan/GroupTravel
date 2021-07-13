@@ -77,9 +77,10 @@
                                 <div class="modal-body">活动参加人数共：${aa}</div>
                                 <div class="modal-body">人均缴费：${aa}</div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal">发送通知邮件</button>
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal">生成活动报告</button>
+                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal" onclick="sendMail()">发送通知邮件</button>
+                                    <%--<a href="/Email" class="tm-btn text-uppercase" data-dismiss="modal" onclick="sendMail()">发送通知邮件</a>--%>
+                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal" onclick="window.location.href='actReport.jsp'">生成活动报告</button>
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal -->

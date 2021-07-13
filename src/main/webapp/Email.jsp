@@ -31,9 +31,10 @@
 		window.setInterval("countDown()",1000);
 	</script>
 	<style>
-		#Time,#p{
-			font-size: 150px;
+		#Time{
+			font-size: 50px;
 			text-align: center;
+			color: red;
 		}
 		#Font,#p{
 			font-size: 100px;
@@ -43,11 +44,23 @@
 </head>
 
 <body>
-<div class="tm-about-img-container">
-	<h1 class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-md-offset-3 col-lg-offset-3 col-xl-offset-3">邮件发送成功</h1>
-	<p style="color: yellow; ">页面将在<span id="Time" >5</span>秒后自动跳转，若没有，请点击<a onClick="javascript :history.back(-1);">这里</a></p>
+<div class="tm-contact-img-container"></div>
+<%--<div>--%>
+<%--	<h1 class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-md-offset-3 col-lg-offset-3 col-xl-offset-3 tm-gold-text">邮件发送成功</h1>--%>
+<%--	<p style="color: yellow; ">页面将在<span id="Time" >5</span>秒后自动跳转，若没有，请点击<a onClick="javascript :history.back(-1);">这里</a></p>--%>
+<%--</div>--%>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-center">
+    <h2 class="tm-gold-text tm-title">邮件发送成功</h2>
+    <p class="tm-subtitle">页面将在<span id="Time" >5</span>秒后自动跳转，若没有，请点击<a onClick="javascript :history.back(-1);">这里</a></p>
 </div>
-<footer class="tm-footer">
+<footer style="position:absolute; /* 必要 */
+        bottom:0; /* 必要 */
+        height:50px;
+		color: #c6c6c6;
+		background-color: #191919;
+		background-image: url('./img/classic-pattern-bg.png');
+		font-size: 1rem;"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-center">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 tm-copyright-col">
