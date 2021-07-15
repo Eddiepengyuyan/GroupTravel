@@ -206,7 +206,8 @@ public class ActivitiesController {
                            HttpSession session,
                            HttpServletRequest request,
                            HttpServletResponse response,
-                           RedirectAttributes redirectAttributes)
+                           RedirectAttributes redirectAttributes,
+                           Model model)
     {
         Activities thisAct = activitiesService.findByTheme(theme);
         int id = thisAct.getId();
@@ -215,8 +216,9 @@ public class ActivitiesController {
         int countUser = activitiesService.countUserByActId(thisAct.getId());
         int feePerUser = fee/countUser;
         activitiesService.addAaperfee(feePerUser,id);
-        redirectAttributes.addAttribute("teamId",teamId);
-        return "redirect:/GroupAct";
+//        redirectAttributes.addAttribute("teamId",teamId);
+        redirectAttributes.addAttribute("actId",id);
+        return "redirect:/EmailSetUp";
     }
     
     @RequestMapping("/closeAct")
@@ -229,7 +231,8 @@ public class ActivitiesController {
         int id = thisAct.getId();
         activitiesService.closeAct(id);
         redirectAttributes.addAttribute("teamId",teamId);
-        return "redirect:/GroupAct";
+        redirectAttributes.addAttribute("actId",id);
+        return "redirect:/EmailEnd";
     }
 
     @RequestMapping("/actReport")

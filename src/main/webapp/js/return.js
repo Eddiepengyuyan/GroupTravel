@@ -27,10 +27,16 @@ function submit_myteam(vs) {
     window.location = url;
 }
 
-function sendMail(){
-    // var team = document.getElementById("teamName_"+vs).value;
-    var url = "Email";
-    // url += "?teamName="+team;
+function sendMailSetUp(){
+    var actId = document.getElementById("actId").value;
+    var url = "EmailSetUp";
+    url += "?actId="+actId;
+    window.location = url;
+}
+function sendMailEnd(){
+    var actId = document.getElementById("actId").value;
+    var url = "EmailEnd";
+    url += "?actId="+actId;
     window.location = url;
 }
 

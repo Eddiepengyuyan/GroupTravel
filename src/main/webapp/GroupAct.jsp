@@ -57,7 +57,8 @@
                                             <a role="menuitem" tabindex="-1" href="export?actId=${creAct.id}" class="tm-gold-text"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="javascript:setup(${vs.index})" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
+                                            <input type="hidden" id="actId" value="${creAct.id}">
+                                            <a role="menuitem" tabindex="-1" href="javascript:setup(${vs.index})" class="tm-gold-text"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
                                         </li>
                                         <li role="presentation">
                                             <a role="menuitem" tabindex="-1" href="javascript:closeAct(${vs.index})"  class="tm-gold-text"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
