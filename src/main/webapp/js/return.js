@@ -5,6 +5,13 @@ function submit_t(vs){
     url += "?actTheme="+theme+"&teamId="+teamid;
     window.location = url;
 }
+
+function submit_ta(vs){
+    var theme = document.getElementById("actTheme_"+vs).value;
+    var url = "aboutJoi";
+    url += "?actTheme="+theme;
+    window.location = url;
+}
 //主页中的”团队详情“的跳转
 function submit_team(vs) {
     var team = document.getElementById("teamId_" + vs).value;

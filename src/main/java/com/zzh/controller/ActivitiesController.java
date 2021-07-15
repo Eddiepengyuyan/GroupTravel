@@ -24,6 +24,9 @@ public class ActivitiesController {
 
     public void showActivities(Model model,int teamId){
         List<Integer> actids = activitiesService.findActidByTid(teamId);
+        if(actids.size() == 0){
+            actids.add(-1);
+        }
         List<Activities> thisActivities = activitiesService.findActByIds(actids);
         List<Activities> activities = activitiesService.findAll();
         model.addAttribute("activities", thisActivities);
@@ -125,6 +128,8 @@ public class ActivitiesController {
         aboutAct(model,session,theme,teamId,request);
         return "about";
     }
+
+
 
     @RequestMapping("/aboutAdd")
     public String addUser(Model model,
@@ -233,6 +238,9 @@ public class ActivitiesController {
 
         //查找本团队的活动活动
         List<Integer> actIds = activitiesService.findActidByTid(teamId);
+        if (actIds.size() == 0){
+            actIds.add(-1);
+        }
         List<Activities> activities = activitiesService.findActByIds(actIds);
         //获得活动id
         Activities thisAct = activitiesService.findByTheme(theme);

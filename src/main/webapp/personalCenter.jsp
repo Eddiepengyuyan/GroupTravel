@@ -65,7 +65,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                                             <li role="presentation">
-                                                <a href="javascript:submit_t(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
+                                                <a href="javascript:submit_ta(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
                                             </li>
                                             <li role="presentation">
                                                 <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text text-uppercase" onclick=""><i class="glyphicon glyphicon-credit-card"></i>缴纳费用</a>

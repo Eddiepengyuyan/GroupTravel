@@ -96,7 +96,49 @@
 <!--            <artifactId>mybatis-spring</artifactId>-->
 <!--            <version>1.2.2</version>-->
 <!--        </dependency>-->
+
+        <!--    EasyPOI的依赖    -->
+        <!--easypoi导出excel start-->
+        <!--easypoi-base 导入导出的工具包,可以完成Excel导出,导入,Word的导出,Excel的导出功能-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-base</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!--easypoi-web  耦合了spring-mvc 基于AbstractView,极大的简化spring-mvc下的导出功能-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-web</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!--easypoi-annotation 基础注解包,作用与实体对象上,拆分后方便maven多工程的依赖管理-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-annotation</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!--easypoi导出excel end-->
+        <!-- 文件上传 start-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!-- 文件上传 end-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-spring-boot-starter</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+
     </dependencies>
+
+
 
     <build>
         <resources>

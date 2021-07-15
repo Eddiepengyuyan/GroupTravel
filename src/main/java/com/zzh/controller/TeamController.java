@@ -78,6 +78,9 @@ public class TeamController {
         }
         //获取本团队活动id
         List<Integer> actids = activitiesService.findActidByTid(teamId);
+        if(actids.size() == 0){
+            actids.add(-1);
+        }
         List<Activities> thisActivities = activitiesService.findActByIds(actids);
         //参与人员
         List<User> users = userService.findByids(userids);
