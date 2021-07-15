@@ -81,4 +81,7 @@ public interface ITeamMapper {
      */
     @Select("select uid from team_user where teamid = #{teamId}")
     List<Integer> findUserIds(int teamId);
+
+    @Insert("insert into team_act (teamid,actid) values (#{teamId},#{actId})")
+    void addAct(@Param("teamId")int teamId,@Param("actId") int actId);
 }

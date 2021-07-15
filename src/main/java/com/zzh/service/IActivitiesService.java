@@ -52,4 +52,6 @@ public interface IActivitiesService {
     void addZjperfee(int zjAfter, int actId, int userId);
 
     void addAaperfee(int feePerUser, int actid);
+
+    int getAaperfee(int actId, int uid);
 }

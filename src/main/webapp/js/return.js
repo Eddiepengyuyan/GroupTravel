@@ -125,3 +125,11 @@ function  add_zjperfee(){
     url += "?addUseract="+addUseract+"&addUseruser="+addUseruser+"&zj_perfee="+zj_perfee+"&teamId="+teamId+"&thisActTheme="+thisActTheme;
     window.location = url;
 }
+
+function pay(){
+    var thisActTheme = document.getElementById("thisActTheme").value;
+    var url = "pay";
+    url += "?actTheme="+thisActTheme;
+    window.location = url;
+
+}

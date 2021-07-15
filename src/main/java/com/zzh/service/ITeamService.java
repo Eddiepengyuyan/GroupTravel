@@ -20,4 +20,6 @@ public interface ITeamService {
     Teams findById(int teamid);
 
     List<Integer> findUserIds(int teamId);
+
+    void addAct(int teamId, int actid);
 }

@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
+import com.zzh.domain.DetialReportVo;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -21,20 +22,21 @@ import java.util.NoSuchElementException;
  * @author scy 2018/8/26
  */
 public class FileUtil {
-    public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass,String fileName,boolean isCreateHeader, HttpServletResponse response){
+    public static void exportExcel(List<?> list, String title, String sheetName, Class<DetialReportVo> pojoClass, String fileName, boolean isCreateHeader, HttpServletResponse response){
         ExportParams exportParams = new ExportParams(title, sheetName);
         exportParams.setCreateHeadRows(isCreateHeader);
         defaultExport(list, pojoClass, fileName, response, exportParams);
 
     }
-    public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass,String fileName, HttpServletResponse response){
+    public static void exportExcel(List<?> list, String title, String sheetName, Class<DetialReportVo> pojoClass,String fileName, HttpServletResponse response){
         defaultExport(list, pojoClass, fileName, response, new ExportParams(title, sheetName));
     }
+
     public static void exportExcel(List<Map<String, Object>> list, String fileName, HttpServletResponse response){
         defaultExport(list, fileName, response);
     }
 
-    private static void defaultExport(List<?> list, Class<?> pojoClass, String fileName, HttpServletResponse response, ExportParams exportParams) {
+    private static void defaultExport(List<?> list, Class<DetialReportVo> pojoClass, String fileName, HttpServletResponse response, ExportParams exportParams) {
         Workbook workbook = ExcelExportUtil.exportExcel(exportParams,pojoClass,list);
         if (workbook != null);
         downLoadExcel(fileName, response, workbook);

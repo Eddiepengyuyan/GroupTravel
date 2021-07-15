@@ -111,7 +111,7 @@
 --%>
 					<c:if test="${thisActivity.status == 2}">
 							<li role="presentation">
-								<a href="" class=" tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>缴纳费用</a>
+								<a href="javascript:pay()" class=" tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>缴纳费用</a>
 							</li>
 					</c:if>
 							<li role="presentation">

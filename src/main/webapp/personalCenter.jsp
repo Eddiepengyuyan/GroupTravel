@@ -13,7 +13,6 @@
     <!-- load stylesheets -->
     <link rel="stylesheet" href="css/bootstrap.min.css">                                      <!-- Bootstrap style -->
     <link rel="stylesheet" href="css/templatemo-style.css">                                   <!-- Templatemo style -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 
@@ -50,7 +49,6 @@
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="tm-blog-post">
                     <h3 class="tm-gold-text">我参加的活动</h3><br>
-                    <c:if test="${not empty requestScope.joiAct}">
                         <c:forEach items="${requestScope.joiAct}" var="joiAct" varStatus="vs">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                 <div class="tm-content-box">
@@ -59,23 +57,23 @@
                                     <p class="tm-margin-b-20">${joiAct.message} <br>
                                             ${joiAct.number}</p>
                                     <input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
-                                    <div class="dropdown">
-                                        <button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu2"
-                                                data-toggle="dropdown">详情
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                                            <li role="presentation">
-                                                <a href="javascript:submit_ta(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
-                                            </li>
-                                            <li role="presentation">
-                                                <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text text-uppercase" onclick=""><i class="glyphicon glyphicon-credit-card"></i>缴纳费用</a>
-                                            </li>
+<%--
+                    活动是否已结束
+                    未结束
+--%>
+                                    <c:if test="${joiAct.status == 0 || joiAct.status == 1}">
+                                        <p class="tm-gold-text" >请等待活动结束再进行缴费</p>
+<%--                                        <c:out value="请等待活动结束再进行缴费"></c:out>--%>
+                                    </c:if>
+                                    <c:if test="${joiAct.status == 2}">
+                                        <input type="hidden" id="thisActTheme" value="${joiAct.theme}">
+                                        <a role="menuitem" tabindex="-1" href="javascript:pay()" class="tm-btn tm-gold-text text-uppercase" onclick="">缴纳费用</a>
+                                    </c:if>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
-                    </c:if>
                 </div>
             </div>
         </div>

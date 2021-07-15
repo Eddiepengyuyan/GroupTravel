@@ -1,6 +1,6 @@
 package com.zzh.controller;
 
-import com.zzh.service.MailService;
+import com.zzh.serviceImpl.MailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

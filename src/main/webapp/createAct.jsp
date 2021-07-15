@@ -26,7 +26,7 @@
 
 <body>
     <jsp:include page="common.jsp"></jsp:include>
-    <c:set value="teamId" var="teamId"></c:set>
+    <c:set value="${requestScope.teamId}" var="teamId"></c:set>
     <div class="tm-contact-img-container">
 
     </div>

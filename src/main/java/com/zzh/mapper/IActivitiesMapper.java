@@ -225,6 +225,8 @@ public interface IActivitiesMapper {
     @Select("select zj_perfee from act_user where activityid=#{actId} and userid=#{userId}")
     int getZjperfee(@Param("actId") int actId,@Param("userId") int userId);
 
+    @Select("select aa_perfee from act_user where activityid=#{actId} and userid=#{userId}")
+    int getAaperfee(@Param("actId") int actId,@Param("userId") int userId );
 
     /**
      * @param zjAfter

@@ -1,7 +1,8 @@
-package com.zzh.service;
+package com.zzh.serviceImpl;
 
 import com.zzh.domain.Activities;
 import com.zzh.mapper.IActivitiesMapper;
+import com.zzh.service.IActivitiesService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -124,6 +125,11 @@ public class ActivitiesService implements IActivitiesService {
     @Override
     public void addAaperfee(int feePerUser,int actid) {
         iActivitiesMapper.addAaperfee(feePerUser,actid);
+    }
+
+    @Override
+    public int getAaperfee(int actId, int uid) {
+        return iActivitiesMapper.getAaperfee(actId,uid);
     }
 
 

@@ -1,7 +1,8 @@
-package com.zzh.service;
+package com.zzh.serviceImpl;
 
 import com.zzh.domain.User;
 import com.zzh.mapper.IUserMapper;
+import com.zzh.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,7 +12,7 @@ import java.util.List;
  * @author 22505
  */
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
     @Resource
     private IUserMapper iUserMapper;

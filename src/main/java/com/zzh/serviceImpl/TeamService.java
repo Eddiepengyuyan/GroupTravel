@@ -1,14 +1,15 @@
-package com.zzh.service;
+package com.zzh.serviceImpl;
 
 import com.zzh.domain.Teams;
 import com.zzh.mapper.ITeamMapper;
+import com.zzh.service.ITeamService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class TeamService implements ITeamService{
+public class TeamService implements ITeamService {
     @Resource
     private ITeamMapper iTeamMapper;
 
@@ -50,5 +51,10 @@ public class TeamService implements ITeamService{
     @Override
     public List<Integer> findUserIds(int teamId) {
         return iTeamMapper.findUserIds(teamId);
+    }
+
+    @Override
+    public void addAct(int teamId, int actId) {
+        iTeamMapper.addAct(teamId,actId);
     }
 }

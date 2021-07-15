@@ -2,18 +2,17 @@ package com.zzh;
 
 
 import com.zzh.domain.Activities;
+import com.zzh.domain.DetialReportVo;
 import com.zzh.domain.Teams;
 import com.zzh.domain.User;
-import com.zzh.mapper.IActivitiesMapper;
-import com.zzh.mapper.IStudentsMapper;
-import com.zzh.mapper.ITeamMapper;
-import com.zzh.mapper.IUserMapper;
+import com.zzh.mapper.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -31,6 +30,9 @@ public class MybatisTest {
 
     @Autowired
     private IActivitiesMapper iActivitiesMapper;
+
+    @Resource
+    private IExcelMapper iExcelMapper;
 
     @Test
     public void test() {
@@ -84,5 +86,11 @@ public class MybatisTest {
 
         System.out.println(is);
         System.out.println(fe.get(0));
+    }
+
+    @Test
+    public void test5(){
+        List<DetialReportVo> ex = iExcelMapper.getExportDatas(2);
+        System.out.println(ex);
     }
 }

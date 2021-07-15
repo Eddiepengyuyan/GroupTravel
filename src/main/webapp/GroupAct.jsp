@@ -19,6 +19,7 @@
 
 <body>
 <jsp:include page="common.jsp"></jsp:include>
+<c:set var="teamId" value="${requestScope.teamId}"></c:set>
 <div class="tm-blog-img-container"></div>
 <section class="tm-section">
     <div class="container-fluid">
@@ -53,7 +54,7 @@
                                         </li>
                                         <li role="presentation">
                                             <input type="hidden" id="teamId" value="${requestScope.teamId}">
-                                            <a role="menuitem" tabindex="-1" href="" class="tm-gold-text"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
+                                            <a role="menuitem" tabindex="-1" href="export?actId=${creAct.id}" class="tm-gold-text"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
                                         </li>
                                         <li role="presentation">
                                             <a role="menuitem" tabindex="-1" href="javascript:setup(${vs.index})" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>

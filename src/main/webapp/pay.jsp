@@ -27,12 +27,11 @@
         <div class="row tm-2-rows-sm-swap">
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-md-offset-4 col-lg-offset-4 col-xl-offset-4">
                 <h2 class="tm-gold-text">缴费清单</h2>
-                <c:set var="thisAcitvity" value="${sessionScope.thisActivity}"></c:set>
-                <c:set var="thisleader" value="${sessionScope.leadername}"></c:set>
-                <h3 class="tm-gold-text">活动名称：${thisAcitvity.theme}</h3>
-                <p>人均缴费：${thisAcitvity.fee}</p>
-                <p>追加活动费用：${thisAcitvity.fee}</p>
-                <p>最终应缴费用：${thisAcitvity.fee}</p>
+                <c:set var="thisActivity" value="${requestScope.thisActivity}"></c:set>
+                <h3 class="tm-gold-text">活动名称：${thisActivity.theme}</h3>
+                <p>人均缴费：${requestScope.aaPerFee}</p>
+                <p>追加活动费用：${requestScope.zjPerFee}</p>
+                <p>最终应缴费用：${requestScope.perFee}</p>
                 <a role="menuitem" tabindex="-1" class="tm-btn" data-toggle="modal" data-target="#myModal2">缴纳费用</a>
             </div>
             <!-- 模态框（Modal） -->

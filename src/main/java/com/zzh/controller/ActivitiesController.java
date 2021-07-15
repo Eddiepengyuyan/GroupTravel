@@ -2,9 +2,9 @@ package com.zzh.controller;
 
 import com.zzh.domain.Activities;
 import com.zzh.domain.User;
-import com.zzh.service.ActivitiesService;
-import com.zzh.service.TeamService;
-import com.zzh.service.UserService;
+import com.zzh.serviceImpl.ActivitiesService;
+import com.zzh.serviceImpl.TeamService;
+import com.zzh.serviceImpl.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -114,8 +114,13 @@ public class ActivitiesController {
 //        System.out.println("传参test"+name+number+theme);
         int leaderid = userService.findIdByName(name);
         activitiesService.insert(subject,start,time,number,cost,message,leaderid);
+        //添加进act_user
+        Activities thisAct = activitiesService.findByTheme(subject);
+        userService.addUser(thisAct.getId(), leaderid);
+        //添加进team_act
+        teamService.addAct(teamId,thisAct.getId());
         showActivities(model,teamId);
-        return "index";
+        return "redirect:/index";
     }
 
     @RequestMapping("/about")
@@ -284,6 +289,27 @@ public class ActivitiesController {
         return "redirect:/about";
     }
 
+    @RequestMapping("/pay")
+    public String pay(Model model,
+                      HttpSession session,
+                      HttpServletRequest request,
+                      HttpServletResponse response,
+                      @RequestParam("actTheme")String theme)
+    {
+        session = request.getSession();
+        User thisUser = (User)session.getAttribute("thisUser");
+        int uid = thisUser.getId();
+        Activities thisAct = activitiesService.findByTheme(theme);
+        int actId = thisAct.getId();
+        int aaPerFee = activitiesService.getAaperfee(actId,uid);
+        int zjPerFee = activitiesService.getZjperfee(actId,uid);
+        int perFee = aaPerFee+zjPerFee;
+        model.addAttribute("thisActivity",thisAct);
+        model.addAttribute("aaPerFee",aaPerFee);
+        model.addAttribute("zjPerFee",zjPerFee);
+        model.addAttribute("perFee",perFee);
+        return"pay";
+    }
 
 
 }
