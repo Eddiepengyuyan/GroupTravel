@@ -140,9 +140,10 @@ public class ActivitiesController {
     public String addUser(Model model,
                           HttpServletRequest request,
                           HttpSession session,
+                          RedirectAttributes redirectAttributes,
                           @RequestParam(value="actid")int actid,
                           @RequestParam(value = "userid")int userid,
-                          @RequestParam(value="teamId")int teamId
+                          @RequestParam(value="teamid")int teamId
                           )
     {
         int uid = userid;
@@ -151,7 +152,9 @@ public class ActivitiesController {
         String theme = act.getTheme();
         System.out.println(theme);
         aboutAct(model,session,theme,teamId,request);
-        return "about";
+        redirectAttributes.addAttribute("actTheme",theme);
+        redirectAttributes.addAttribute("teamId",teamId);
+        return "redirect:/about";
     }
 
     @RequestMapping("/deleteAct")

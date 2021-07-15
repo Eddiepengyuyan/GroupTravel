@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -134,13 +135,14 @@ public class TeamController {
     public String GroupAboutAdd(Model model,
                                 HttpServletRequest request,
                                 HttpSession session,
-                                @RequestParam(value="teamid")int teamid,
+                                RedirectAttributes redirectAttributes,
+                                @RequestParam(value="teamid")int teamId,
                                 @RequestParam(value = "userid")int userid)
     {
         //在team_user表中添加一条数据
-        teamService.addUser(teamid,userid);
+        teamService.addUser(teamId,userid);
         //找到当前团队
-        Teams thisTeam = teamService.findById(teamid);
+        Teams thisTeam = teamService.findById(teamId);
         //获取团长id
         int leaderId = thisTeam.getLeaderid();
         //找到团长信息
@@ -156,7 +158,8 @@ public class TeamController {
         List<Integer> userIds = teamService.findUserIds(thisTeam.getId());
         List<User> this_user = userService.findByids(userIds);
         model.addAttribute("users",this_user);
-        return "GroupAbout";
+        redirectAttributes.addAttribute("teamId",teamId);
+        return "redirect:/GroupAbout";
     }
 
 }
