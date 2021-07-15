@@ -25,5 +25,31 @@ public interface IActivitiesService {
 
     void deleteById(int actid);
 
+    List<Activities> findActByIds1(List<Integer> joiActId);
+
+    List<Activities> findActByIds2(List<Integer> joiActId);
+
     List<Activities> findActByIds(List<Integer> joiActId);
+
+    void updateAct(int id,String number, String theme, String time, String start, String fee, String message);
+
+    void setupAct(int id);
+
+    void closeAct(int id);
+
+    List<Integer> findActidByTid(int teamid);
+
+    int countUserByActId(int id);
+
+    List<Integer> findFeeByIds1(List<Integer> joiActId);
+
+    List<Integer> findFeeByIds2(List<Integer> joiActId);
+
+    List<Integer> countAllUser(List<Integer> joiActId);
+
+    int getZjperfee(int actId, int userId);
+
+    void addZjperfee(int zjAfter, int actId, int userId);
+
+    void addAaperfee(int feePerUser, int actid);
 }

@@ -71,4 +71,70 @@ public class ActivitiesService implements IActivitiesService {
         return iActivitiesMapper.findActByIds(joiActId);
     }
 
+    @Override
+    public void updateAct(int id,String number, String theme, String time, String start, String fee, String message) {
+        iActivitiesMapper.updateAct(id,number,theme,time,start,fee,message);
+    }
+
+    @Override
+    public void setupAct(int id) {
+        iActivitiesMapper.setupAct(id);
+    }
+
+    @Override
+    public void closeAct(int id) {
+        iActivitiesMapper.closeAct(id);
+    }
+
+    @Override
+    public List<Integer> findActidByTid(int teamid) {
+        return iActivitiesMapper.findActidByTid(teamid);
+    }
+
+    @Override
+    public int countUserByActId(int id) {
+        return iActivitiesMapper.countUserByActId(id);
+    }
+
+    @Override
+    public List<Integer> findFeeByIds1(List<Integer> joiActId) {
+        return iActivitiesMapper.findFeeByIds1(joiActId);
+    }
+
+    @Override
+    public List<Integer> findFeeByIds2(List<Integer> joiActId) {
+        return iActivitiesMapper.findFeeByIds2(joiActId);
+    }
+
+    @Override
+    public List<Integer> countAllUser(List<Integer> joiActId) {
+        return iActivitiesMapper.countAllUser(joiActId);
+    }
+
+    @Override
+    public int getZjperfee(int actId, int userId) {
+        return iActivitiesMapper.getZjperfee(actId,userId);
+    }
+
+    @Override
+    public void addZjperfee(int zjAfter,int actId,int userId) {
+        iActivitiesMapper.addZjperfee(zjAfter,actId,userId);
+    }
+
+    @Override
+    public void addAaperfee(int feePerUser,int actid) {
+        iActivitiesMapper.addAaperfee(feePerUser,actid);
+    }
+
+
+    @Override
+    public List<Activities> findActByIds1(List<Integer> joiActId) {
+        return iActivitiesMapper.findActByIds1(joiActId);
+    }
+
+    @Override
+    public List<Activities> findActByIds2(List<Integer> joiActId) {
+        return iActivitiesMapper.findActByIds2(joiActId);
+    }
+
 }

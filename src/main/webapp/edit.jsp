@@ -26,10 +26,9 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-lg-offset-3 col-xl-offset-3">
                     <section>
                         <h3 class="tm-gold-text tm-form-title">输入编辑后的活动信息</h3>
-                        <form action="index.jsp" method="post" class="tm-contact-form">
-                            <div class="form-group">
-                                <input type="text" id="activity_name" name="activity_name" class="form-control" placeholder="姓名"  required/>
-                            </div>
+                        <input type="hidden" id="teamId" value="${requestScope.teamId}"/>
+
+                        <form action="/editSuccess?teamId=${teamId}" method="post" class="tm-contact-form">
                             <div class="form-group">
                                 <input type="email" id="activity_number" name="activity_number" class="form-control" placeholder="邮箱"  required/>
                             </div>

@@ -27,15 +27,18 @@
 	<div class="container-fluid">
 		<div class="row tm-2-rows-sm-swap">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
-				<c:set var="thisAcitvity" value="${sessionScope.thisActivity}" ></c:set>
-					<c:set var="thisleader" value="${sessionScope.leadername}"></c:set>
-						<h3 class="tm-gold-text">${thisAcitvity.theme}</h3>
-						<p>${thisAcitvity.message}</p>
+				<c:set var="thisActivity" value="${sessionScope.thisActivity}" ></c:set>
+				<c:set var="thisleader" value="${sessionScope.leadername}"></c:set>
+				<c:set var="teamId" value="${requestScope.teamId}"></c:set>
+				<input type="hidden" id="thisActTheme" value="${thisActivity.theme}"/>
+						<h3 class="tm-gold-text">${thisActivity.theme}</h3>
+						<p>${thisActivity.message}</p>
 						<p>团长：${thisleader}</p>
-						<p>联系电话：${thisAcitvity.number}</p>
-						<p>活动时间：${thisAcitvity.date}</p>
-						<p>活动起点：${thisAcitvity.start}</p>
-						<p>活动费用(元)：${thisAcitvity.fee}</p>
+						<p>联系方式：${thisActivity.number}</p>
+						<p>活动时间：${thisActivity.date}</p>
+						<p>活动起点：${thisActivity.start}</p>
+						<p>活动费用(元)：${thisActivity.fee}</p>
+						<p>活动id：${thisActivity.id}</p>
 
 			</div>
 
@@ -50,27 +53,72 @@
 
 
 			</div>
-			<c:if test="${empty sessionScope.user}">
+<%--
+		是否加入团队
+		未加入
+--%>
+			<c:if test="${!requestScope.isInTeam}">
 				<div class="alert alert-warning col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 					<a href="#" class="close" data-dismiss="alert">
 						&times;
 					</a>
-					<strong>警告！</strong>请<a href="GroupAbout">加入团队</a>后再参加活动！
+					<strong>警告！</strong>请<a href="GroupAbout?teamId=${teamId}">加入团队</a>后再参加活动！
 				</div>
 			</c:if>
-			<c:if test="${not empty sessionScope.user}">
-				<c:set var="thisAcitvity" value="${sessionScope.thisActivity}" ></c:set>
+<%--
+		已加入
+--%>
+			<c:if test="${requestScope.isInTeam}">
 				<c:set value="${sessionScope.user}" var="thisUser"></c:set>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-					<input type="hidden" id="addUseract" value="${thisAcitvity.id}">
-					<input type="hidden" id="addUseruser" value="${thisUser.id}">
-					<a href="javascript:addAct_t()" class="tm-btn text-uppercase">报名活动</a>
-				</div>
-			</c:if>
-			<c:if test="${not empty sessionScope.fee}">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-					<a class="tm-btn text-uppercase" data-toggle="modal" data-target="#myModal">查看团费</a>
-				</div>
+
+<%--
+			是否已经参加活动
+			未参加
+--%>
+				<c:if test="${!requestScope.isInAct}">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+						<input type="hidden" id="addUseract" value="${thisActivity.id}">
+						<input type="hidden" id="addUseruser" value="${thisUser.id}">
+						<a href="javascript:addAct_t()" class="tm-btn text-uppercase">报名活动</a>
+					</div>
+				</c:if>
+<%--
+			已参加
+--%>
+				<c:if test="${requestScope.isInAct}">
+<%--
+				活动是否已结束
+				未结束
+--%>
+					<c:if test="${thisActivity.status == 0 && thisActivity.status == 1}">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+							<c:out value="您已加入活动，请等待活动结束进行缴费。"></c:out>
+						</div>
+					</c:if>
+<%--
+					下拉框
+--%>
+					<div class="dropdown col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+						<button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu2"
+								data-toggle="dropdown">缴费
+						</button>
+
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+<%--
+				活动是否已结束
+				已结束
+--%>
+					<c:if test="${thisActivity.status == 2}">
+							<li role="presentation">
+								<a href="" class=" tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>缴纳费用</a>
+							</li>
+					</c:if>
+							<li role="presentation">
+								<a data-toggle="modal" data-target="#myModal" role="menuitem" herf="#" tabindex="-1" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-credit-card"></i>追加费用</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
 			</c:if>
 		</div>
 		<%--		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button>--%>
@@ -80,14 +128,13 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">缴费详情</h4>
+						<h4 class="modal-title" id="myModalLabel">追加缴费</h4>
 					</div>
-					<div class="modal-body">活动人均费用为：${aa}元</div>
-					<div class="modal-body">额外活动费用为：${aa}元</div>
-					<div class="modal-body">您目前需要缴纳的费用为：${aa}元</div>
+					<div class="modal-body">您要追加的费用为：
+						<input type="text" style="margin-left: 20px;margin-right: 20px" id="zj_perfee" class="form-control">元
+					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="tm-btn text-uppercase" data-dismiss="modal">确认</button>
+						<button type="button" class="tm-btn text-uppercase" onclick="add_zjperfee()" data-dismiss="modal">确认</button>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal -->
@@ -103,6 +150,7 @@
 						<p class="tm-margin-b-20">${activity.message} <br>
 								${activity.number}</p>
 						<input type="hidden" id="actTheme_${vs.index}" name="actTheme" value="${activity.theme}"/>
+						<input type="hidden" id="teamId" value="${teamId}"/>
 						<a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase">活动详情</a>
 					</div>
 				</div>

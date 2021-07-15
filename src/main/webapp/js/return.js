@@ -1,21 +1,22 @@
 function submit_t(vs){
     var theme = document.getElementById("actTheme_"+vs).value;
+    var teamid = document.getElementById("teamId").value;
     var url = "about";
-    url += "?actTheme="+theme;
+    url += "?actTheme="+theme+"&teamId="+teamid;
     window.location = url;
 }
 //主页中的”团队详情“的跳转
 function submit_team(vs) {
-    var team = document.getElementById("teamName_" + vs).value;
+    var team = document.getElementById("teamId_" + vs).value;
     var url = "GroupAbout";
-    url += "?teamName=" + team;
+    url += "?teamId=" + team;
     window.location = url;
 }
 //个人主页下”团队详情“的跳转
 function submit_myteam(vs) {
-    var team = document.getElementById("teamName_" + vs).value;
+    var team = document.getElementById("teamId_" + vs).value;
     var url = "GroupAct";
-    url += "?teamName=" + team;
+    url += "?teamId=" + team;
     window.location = url;
 }
 
@@ -23,6 +24,23 @@ function sendMail(){
     // var team = document.getElementById("teamName_"+vs).value;
     var url = "Email";
     // url += "?teamName="+team;
+    window.location = url;
+}
+
+function closeAct(vs){
+    var theme = document.getElementById("actTheme_"+vs).value;
+    var teamId = document.getElementById("teamId").value;
+    var url = "closeAct";
+    url += "?actTheme="+theme+"&teamId="+teamId;
+    alert("活动已结束");
+    window.location = url;
+}
+
+function actReport(vs){
+    var theme = document.getElementById("actTheme_"+vs).value;
+    var teamid = document.getElementById("teamId").value;
+    var url = "actReport";
+    url += "?actTheme="+theme+"&teamId="+teamid;
     window.location = url;
 }
 
@@ -35,8 +53,10 @@ function sendMail(){
 
 function delete_t(vs){
     var theme = document.getElementById("actTheme_"+vs).value;
+    var teamId = document.getElementById("teamId").value;
     var url = "deleteAct";
-    url += "?actTheme="+theme;
+    url += "?actTheme="+theme+"&teamId="+teamId;
+    alert("删除成功");
     window.location = url;
 }
 
@@ -45,11 +65,11 @@ function addAct_t(){
     // alert(actid);
     var uid = document.getElementById("addUseruser").value;
     // alert(uid);
-    // var theme = document.getElementById("thisTheme").value;
+    var teamId = document.getElementById("teamId").value;
     // alert(theme);
     var url = "aboutAdd";
     // url += "?actTheme="+theme+"&actid"+actid+"&userid"+uid;
-    url += "?actid="+actid+"&userid="+uid;
+    url += "?actid="+actid+"&userid="+uid+"&teamid="+teamId;
     window.location=url;
 }
 
@@ -64,4 +84,32 @@ function addTeam_t(){
     // url += "?actTheme="+theme+"&actid"+actid+"&userid"+uid;
     url += "?teamid="+teamid+"&userid="+uid;
     window.location=url;
+}
+
+function editAct(vs){
+    var theme = document.getElementById("actTheme_"+vs).value;
+    var teamId = document.getElementById("teamId").value;
+    var url = "edit";
+    url += "?actTheme="+theme+"&teamId="+teamId;
+    window.location = url;
+}
+
+function setup(vs){
+    var theme = document.getElementById("actTheme_"+vs).value;
+    var teamId = document.getElementById("teamId").value;
+    var url = "setup";
+    url += "?actTheme="+theme+"&teamId="+teamId;
+    window.location = url;
+}
+
+//追加费用
+function  add_zjperfee(){
+    var addUseract = document.getElementById("addUseract").value;
+    var addUseruser = document.getElementById("addUseruser").value;
+    var zj_perfee = document.getElementById("zj_perfee").value;
+    var teamId = document.getElementById("teamId").value;
+    var thisActTheme = document.getElementById("thisActTheme").value;
+    var url = "add_zjperfee";
+    url += "?addUseract="+addUseract+"&addUseruser="+addUseruser+"&zj_perfee="+zj_perfee+"&teamId="+teamId+"&thisActTheme="+thisActTheme;
+    window.location = url;
 }

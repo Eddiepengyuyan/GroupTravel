@@ -26,7 +26,7 @@
 
 <body>
     <jsp:include page="common.jsp"></jsp:include>
-
+    <c:set value="teamId" var="teamId"></c:set>
     <div class="tm-contact-img-container">
 
     </div>
@@ -40,7 +40,7 @@
                         <h3 class="tm-gold-text tm-form-title">创建新活动</h3>
                         <p class="tm-form-description">亲爱的团长，您可以在此选择创建新的活动项目供他人选择。请根据提示填写以下表单，感谢每一位团长的配合。</p>
 
-                        <form action="/transfer" method="post" class="tm-contact-form">
+                        <form action="transfer?teamId=${teamId}" method="post" class="tm-contact-form">
                             <div class="form-group">
                                 <input type="text" id="activity_name" name="activity_name" class="form-control" placeholder="姓名"  required/>
                             </div>

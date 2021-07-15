@@ -9,6 +9,8 @@ public class Activities {
     private String fee;
     private String message;
     private int leaderid;
+    private int status;
+    //状态码：0 - 正在进行；1 - 成立；2 - 结束；3 - 删除
 
     public int getId() {
         return id;
@@ -74,6 +76,14 @@ public class Activities {
         this.message = message;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Activities{" +
@@ -85,6 +95,7 @@ public class Activities {
                 ", fee='" + fee + '\'' +
                 ", message='" + message + '\'' +
                 ", leaderid=" + leaderid +
+                ", status=" + status +
                 '}';
     }
 }

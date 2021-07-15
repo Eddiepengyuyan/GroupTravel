@@ -58,7 +58,7 @@
         height:50px;
 		color: #c6c6c6;
 		background-color: #191919;
-		background-image: url('./img/classic-pattern-bg.png');
+		background-image: url('img/classic-pattern-bg.png');
 		font-size: 1rem;"
 		class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-center">
 	<div class="container-fluid">

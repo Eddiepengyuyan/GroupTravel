@@ -26,9 +26,9 @@
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="tm-blog-post">
                     <h3 class="tm-gold-text">正在进行的活动
-                        <a href="createAct.jsp"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                        <a href="createAct?teamId=${teamId}"><span class="glyphicon glyphicon-plus-sign"></span></a>
                     </h3><br>
-                    <c:forEach items="${requestScope.creAct}" var="creAct" varStatus="vs">
+                    <c:forEach items="${requestScope.joiAct_under}" var="creAct" varStatus="vs">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <div class="tm-content-box">
                                 <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
@@ -46,45 +46,26 @@
                                             <a role="menuitem" tabindex="-1" href="javascript:submit_t(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="edit.jsp" class="tm-gold-text text-uppercase" onclick="tip()"><i class="glyphicon glyphicon-edit"></i> 编辑</a>
+                                            <a role="menuitem" tabindex="-1" href="javascript:editAct(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-edit"></i> 编辑</a>
                                         </li>
                                         <li role="presentation">
                                             <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" onclick="delete_t(${vs.index})"><i class="glyphicon glyphicon-trash"></i>删除</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
+                                            <input type="hidden" id="teamId" value="${requestScope.teamId}">
+                                            <a role="menuitem" tabindex="-1" href="" class="tm-gold-text"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
+                                            <a role="menuitem" tabindex="-1" href="javascript:setup(${vs.index})" class="tm-gold-text" onclick="tip()"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
                                         </li>
                                         <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
+                                            <a role="menuitem" tabindex="-1" href="javascript:closeAct(${vs.index})"  class="tm-gold-text"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </c:forEach>
-                    <!-- 模态框（Modal） -->
-                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">活动概况</h4>
-                                </div>
-                                <div class="modal-body">活动参加人数共：${aa}</div>
-                                <div class="modal-body">人均缴费：${aa}</div>
-                                <div class="modal-footer">
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal" onclick="sendMail()">发送通知邮件</button>
-                                    <%--<a href="/Email" class="tm-btn text-uppercase" data-dismiss="modal" onclick="sendMail()">发送通知邮件</a>--%>
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal" onclick="window.location.href='actReport.jsp'">生成活动报告</button>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal -->
-                    </div>
                 </div>
             </div>
         </div>
@@ -93,7 +74,7 @@
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
                 <div class="tm-blog-post">
                     <h3 class="tm-gold-text">已结束的活动</h3><br>
-                    <c:forEach items="${requestScope.creAct}" var="creAct" varStatus="vs">
+                    <c:forEach items="${requestScope.joiAct_close}" var="creAct" varStatus="vs">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                             <div class="tm-content-box">
                                 <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
@@ -111,7 +92,7 @@
                                             <a href="javascript:submit_t(${vs.index})" class="tm-gold-text"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="javascript:submit_t(${vs.index})" class="tm-gold-text"><i class="glyphicon glyphicon-align-left"></i>生成活动报告</a>
+                                            <a href="javascript:actReport(${vs.index})" class="tm-gold-text"><i class="glyphicon glyphicon-align-left"></i>生成活动报告</a>
                                         </li>
                                         <li role="presentation">
                                             <a href="/Email" class="tm-gold-text "><i class="glyphicon glyphicon-envelope"></i>发送通知邮件</a>

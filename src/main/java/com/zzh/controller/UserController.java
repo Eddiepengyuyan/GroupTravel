@@ -54,7 +54,6 @@ public class UserController{
                            @RequestParam("realname")String realname,
                            @RequestParam("number")String number
                            ) throws IOException {
-//        System.out.println("test  "+username+password);
         userService.insert(username,password,realname,number);
         return "login";
     }
@@ -71,16 +70,11 @@ public class UserController{
 
         User user = userService.findByUsername(username);
         showActivities(model);
-//        String nName = user.getUsername();
-//        String nPassword = user.getPassword();
-//        System.out.println(nName+"  "+nPassword);
         if(user.getUsername().equals(username) && user.getPassword().equals(password)){
             session.setAttribute("user",user);
-//            System.out.println("success");
             return "index";
         }
         else{
-//            System.out.println("error");
             return "login";
         }
     }
@@ -109,10 +103,6 @@ public class UserController{
             joiActId.add(-1);
         }
         //加入的活动
-//        List<Activities> joiAct = new ArrayList<Activities>();
-//        for (int actId:joiActId){
-//            joiAct.add(activitiesService.findActById(actId));
-//        }
         List<Activities> joiAct = activitiesService.findActByIds(joiActId);
 
         //团长名字
@@ -131,49 +121,3 @@ public class UserController{
         return "personalCenter";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//import com.zzh.domain.User;
-//import org.apache.ibatis.annotations.Mapper;
-//import org.mybatis.spring.annotation.MapperScan;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.ComponentScan;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//
-//import javax.servlet.http.HttpServletRequest;
-//
-//@Controller
-//@ComponentScan("com.zzh.service")
-//@MapperScan("com.zzh.mapper")
-//public class UserController{
-//    @Autowired
-//    private User user;
-//
-//    @RequestMapping()
-//    public String findByName(HttpServletRequest request){
-//
-//    }
-//
-//
-//}

@@ -27,20 +27,24 @@
         <div class="row tm-2-rows-sm-swap">            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3" style="margin-bottom: 10px">
                 <ul class="nav">
                     <h3 class="tm-gold-text">活动列表</h3>
-                    <c:forEach items="${requestScope.users}" var="user" varStatus="vs">
-                        <li><a href="${sss}">${sss}</a></li>
+                    <c:forEach items="${requestScope.actList}" var="actList" varStatus="vs">
+                        <input type="hidden" id="actTheme_${vs.index}" value="${actList.theme}"/>
+                        <input type="hidden" id="teamId" value="${requestScope.teamId}"/>
+                        <li><a href="javascript:actReport(${vs.index})">${actList.theme}</a></li>
                     </c:forEach>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9 col-md-offset-5 col-lg-offset-5 col-xl-offset-5">
-                <c:set var="thisAcitvity" value="${sessionScope.thisActivity}"></c:set>
-                <c:set var="thisleader" value="${sessionScope.leadername}"></c:set>
+                <c:set var="thisAcitvity" value="${requestScope.thisActivity}"></c:set>
+                <c:set var="thisLeader" value="${requestScope.leaderName}"></c:set>
+                <c:set var="countUser" value="${requestScope.countUser}"></c:set>
+                <c:set var="feePerUser" value="${requestScope.feePerUser}"></c:set>
                 <h2 class="tm-gold-text tm-title">活动报告</h2>
                 <h3 class="tm-gold-text">活动名称：${thisAcitvity.theme}</h3>
-                <p>活动团长：${thisleader}</p>
+                <p>活动团长：${thisLeader}</p>
                 <p>活动总消费(元)：${thisAcitvity.fee}</p>
-                <p>活动总人数：${thisAcitvity.fee}</p>
-                <p>人均缴费：${thisAcitvity.fee}</p>
+                <p>活动总人数：${countUser}</p>
+                <p>人均缴费：${feePerUser}</p>
                 <p>已缴费人数：${thisAcitvity.fee}</p>
             </div>
         </div>
@@ -67,6 +71,28 @@
         </div>
     </div>
 </footer>
+
+<%--<script>--%>
+<%--    function numDiv(num1,num2){--%>
+<%--        var baseNum, baseNum1, baseNum2;--%>
+<%--        try{--%>
+<%--            baseNum1=num1.toString().split(".")[1].length;--%>
+<%--        }catch(e){--%>
+<%--            baseNum1=0;--%>
+<%--        }--%>
+<%--        try{--%>
+<%--            baseNum2=num2.toString().split(".")[1].length;--%>
+<%--        }catch(e){--%>
+<%--            baseNum2=0;--%>
+<%--        }--%>
+<%--        with(Math){--%>
+<%--            baseNum=Math.pow(10,baseNum2-baseNum1);--%>
+<%--            // document.write((Number(num1.toString().replace(".",""))/Number(num2.toString().replace(".","")))*baseNum);--%>
+<%--            return (Number(num1.toString().replace(".",""))/Number(num2.toString().replace(".","")))*baseNum;--%>
+<%--            // return 666;--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 
 <%--  导入回传数据jsfiles  --%>
 <script src="js/return.js"></script>

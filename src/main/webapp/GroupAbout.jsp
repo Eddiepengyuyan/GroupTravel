@@ -35,6 +35,7 @@
 						<p>联系邮箱：${this_leader.number}</p>
 						<p>团队信息：${this_team.message}</p>
 			</div>
+
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 tm-2-rows-sm-down-2">
 				<ul class="nav">
 					<h3 class="tm-gold-text">参加人员</h3>
@@ -42,6 +43,9 @@
 						<li>${user.realname}</li>
 					</c:forEach>
 				</ul>
+				<input type="hidden" id="addUserteam" value="${thisTeam.id}">
+				<input type="hidden" id="teamId" value="${thisTeam.id}">
+				<input type="hidden" id="addUseruser" value="${thisUser.id}">
 			</div>
 
 			<c:if test="${empty sessionScope.user}">
@@ -53,14 +57,29 @@
 				</div>
 			</c:if>
 			<c:if test="${not empty sessionScope.user}">
-				<c:set var="thisTeam" value="${requestScope.thisTeam}" ></c:set>
-				<c:set value="${sessionScope.user}" var="thisUser"></c:set>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-					<input type="hidden" id="addUserteam" value="${thisTeam.id}">
-					<input type="hidden" id="addUseruser" value="${thisUser.id}">
-					<a href="javascript:addTeam_t()" class="tm-btn text-uppercase">报名团队</a>
-				</div>
+				<c:set value="${requestScope.isInTeam}" var="isInTeam"></c:set>
+<%--
+		判断是否已经加入团队
+		如果没加入
+--%>
+				<c:if test="${!requestScope.isInTeam}">
+					<c:set var="thisTeam" value="${requestScope.thisTeam}" ></c:set>
+					<c:set value="${sessionScope.user}" var="thisUser"></c:set>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+						<a href="javascript:addTeam_t()" class="tm-btn text-uppercase">报名团队</a>
+					</div>
+				</c:if>
+<%--
+		如果没加入
+--%>
+				<c:if test="${requestScope.isInTeam}">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+						<c:out value="您已加入团队"></c:out>
+					</div>
+				</c:if>
 			</c:if>
+
+
 		</div>
 		<hr class="tm-margin-t-small col-md-12 col-lg-12 col-xl-12">
 		<h3 class="tm-gold-text">团队活动</h3>

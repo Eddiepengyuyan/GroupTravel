@@ -35,8 +35,6 @@ public class TeamController {
                                @RequestParam("group_leader")String leaderName,
                                @RequestParam("group_info")String message,
                                Model model){
-//        List<Teams> teams = teamService.findAllTeams();
-//        User leader = userService.findByUsername(leaderName);
         //通过团长姓名查找团长id
         int leaderId = userService.findIdByName(leaderName);
 //        在team表中添加一条记录
@@ -52,14 +50,7 @@ public class TeamController {
     @RequestMapping("/index")
     public String findAll(Model model, HttpServletRequest req, HttpSession session){
         List<Teams> teams = teamService.findAllTeamsAndLeaders();
-//        int leaderId = -1;
-//        if(teams.size()!=0){
-//            leaderId = teams.get(0).getLeaderid();
-//        }
-//        User leader = userService.findById(leaderId);
-
         model.addAttribute("teams",teams);
-//        model.addAttribute("leader",leader);
         return "index";
     }
 
@@ -67,13 +58,35 @@ public class TeamController {
     public String GroupAbout(Model model,
                              HttpServletRequest request,
                              HttpSession session,
-                             @RequestParam(value="teamName",required = false)String teamName){
-        Teams thisTeam = teamService.findByName(teamName);
+                             @RequestParam(value="teamId",required = false)int teamId){
+        //获取当前用户
+        session = request.getSession();
+        User user = (User)session.getAttribute("thisUser");
+        //获取当前团队
+        Teams thisTeam = teamService.findById(teamId);
         int leaderId = thisTeam.getLeaderid();
         User leader = userService.findById(leaderId);
+        //获取当前团队中的用户的id
+        List<Integer> userids = teamService.findUserIds(thisTeam.getId());
+        boolean isInTeam = false;
+        if(user != null){
+            for (int uids:userids){
+                if (user.getId() == uids){
+                    isInTeam = true;
+                }
+            }
+        }
+        //获取本团队活动id
+        List<Integer> actids = activitiesService.findActidByTid(teamId);
+        List<Activities> thisActivities = activitiesService.findActByIds(actids);
+        //参与人员
+        List<User> users = userService.findByids(userids);
+
+        model.addAttribute("isInTeam",isInTeam);
         model.addAttribute("thisTeam",thisTeam);
         model.addAttribute("leader",leader);
-        List<Activities> thisActivities = activitiesService.findByLid(leaderId);
+        model.addAttribute("users",users);
+//        List<Activities> thisActivities = activitiesService.findByLid(leaderId);
         model.addAttribute("thisActivities",thisActivities);
         return "GroupAbout";
     }
@@ -82,31 +95,34 @@ public class TeamController {
     public String GroupAct(Model model,
                              HttpServletRequest request,
                              HttpSession session,
-                             @RequestParam(value="teamName",required = false)String teamName){
-//1.将用户信息传入
-        session = request.getSession();
-        User user = (User)session.getAttribute("thisUser");
-        //2.通过用户信息查找数据库中的创建活动和参加活动
-
-        //用户姓名
-        String uName = user.getUsername();
-        //用户id
-        int uid = userService.findIdByName(uName);
-        //创建的活动
-        List<Activities> creAct = activitiesService.findByLid(uid);
+                             @RequestParam(value="teamId",required = false)int teamId)
+    {
         //加入的活动的id
-        List<Integer> joiActId = activitiesService.findActidByUid(uid);
+        List<Integer> joiActId = activitiesService.findActidByTid(teamId);
         if(joiActId.size()==0){
             joiActId.add(-1);
         }
         //加入的活动
-        List<Activities> joiAct = activitiesService.findActByIds(joiActId);
-
+        //正在进行的活动
+        List<Activities> joiAct0 = activitiesService.findActByIds1(joiActId);
+        //正在进行的活动的费用列表
+        List<Integer> joiFee0 = activitiesService.findFeeByIds1(joiActId);
+        //已经结束的活动
+        List<Activities> joiAct1 = activitiesService.findActByIds2(joiActId);
+        //已经结束的活动的费用列表
+        List<Integer> joiFee1 = activitiesService.findFeeByIds2(joiActId);
+        //所有活动的人数的列表
+        List<Integer> countAllUser = activitiesService.countAllUser(joiActId);
 
         //3.将活动存入session传给前端
-        model.addAttribute("creAct",creAct);
-        model.addAttribute("joiAct",joiAct);
-
+//        model.addAttribute("creAct",creAct);
+        model.addAttribute("joiAct_under",joiAct0);
+        model.addAttribute("joiAct_close",joiAct1);
+        model.addAttribute("joiFee0",joiFee0);
+        model.addAttribute("joiFee1",joiFee1);
+        model.addAttribute("teamId",teamId);
+        model.addAttribute("teamId",teamId);
+        model.addAttribute("countAllUser",countAllUser);
 
         return "GroupAct";
     }
@@ -116,7 +132,8 @@ public class TeamController {
                                 HttpServletRequest request,
                                 HttpSession session,
                                 @RequestParam(value="teamid")int teamid,
-                                @RequestParam(value = "userid")int userid){
+                                @RequestParam(value = "userid")int userid)
+    {
         //在team_user表中添加一条数据
         teamService.addUser(teamid,userid);
         //找到当前团队

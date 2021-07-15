@@ -36,80 +36,12 @@
                                     <h4 class="tm-margin-b-20 tm-gold-text">团队名：${teams.name}</h4>
                                     <p class="tm-margin-b-20">团长用户名：${leader.username} <br>
                                         团长联系方式：${leader.number}</p>
-                                    <input type="hidden" id="teamName_${vs.index}" name="actTheme" value="${teams.name}"/>
+                                    <input type="hidden" id="teamId_${vs.index}" value="${teams.id}"/>
                                     <a href="javascript:submit_myteam(${vs.index})" class="tm-btn text-uppercase">团队详情</a>
                                 </div>
                                     <%--                        onclick="submit_t(${vs.index})"--%>
                             </div>
                         </c:forEach>
-                </div>
-            </div>
-        </div>
-        <hr class="tm-margin-t-small">
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
-                <div class="tm-blog-post">
-                    <h3 class="tm-gold-text">我创建的活动
-                        <a href="createAct.jsp"><span class="glyphicon glyphicon-plus-sign"></span></a>
-                    </h3><br>
-                    <c:forEach items="${requestScope.creAct}" var="creAct" varStatus="vs">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                            <div class="tm-content-box">
-                                <img src="img/tm-img-310x180-1.jpg" alt="Image" class="tm-margin-b-20 img-fluid">
-                                <h4 class="tm-margin-b-20 tm-gold-text">${creAct.theme}</h4>
-                                <p class="tm-margin-b-20">${creAct.message} <br>
-                                        ${creAct.number}</p>
-                                <div class="dropdown">
-                                    <input type="hidden" id="actTheme_${vs.index}" name="actTheme"
-                                           value="${creAct.theme}"/>
-                                    <button type="button" class="tm-btn dropdown-toggle" id="dropdownMenu1"
-                                            data-toggle="dropdown">详情
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="javascript:submit_t(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="edit.jsp" class="tm-gold-text text-uppercase" onclick="tip()"><i class="glyphicon glyphicon-edit"></i> 编辑</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" onclick="delete_t(${vs.index})"><i class="glyphicon glyphicon-trash"></i>删除</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text"><i class="glyphicon glyphicon-floppy-disk"></i>导出数据</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="about.jsp" class="tm-gold-text"><i class="glyphicon glyphicon-ok-circle"></i>成立</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-ban-circle"></i>结束</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                    <!-- 模态框（Modal） -->
-                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">活动概况</h4>
-                                </div>
-                                <div class="modal-body">活动参加人数共：${aa}</div>
-                                <div class="modal-body">人均缴费：${aa}</div>
-                                <div class="modal-footer">
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal" onclick="sendMail()">发送通知邮件</button>
-<%--                                    <a href="/Email" class="tm-btn text-uppercase" data-dismiss="modal" onclick="sendMail()">发送通知邮件</a>--%>
-                                    <button type="button" class="tm-btn text-uppercase" data-dismiss="modal" onclick="">生成活动报告</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +65,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                                             <li role="presentation">
-                                                <a href="javascript:submit_t(${vs.index})" class="tm-btn text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
+                                                <a href="javascript:submit_t(${vs.index})" class="tm-gold-text text-uppercase"><i class="glyphicon glyphicon-info-sign"></i>活动详情</a>
                                             </li>
                                             <li role="presentation">
                                                 <a role="menuitem" tabindex="-1" href="#" class="tm-gold-text text-uppercase" onclick=""><i class="glyphicon glyphicon-credit-card"></i>缴纳费用</a>

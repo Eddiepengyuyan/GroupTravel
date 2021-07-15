@@ -13,7 +13,7 @@
 <div class="tm-header">
     <div class="container-fluid">
         <div class="tm-header-inner">
-            <a href="index" class="navbar-brand tm-site-name">HuFenWEB</a>
+            <a href="index" class="navbar-brand tm-site-name">HuiFenWEB</a>
             <!-- 导航栏 -->
             <nav class="navbar tm-main-nav">
                 <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#tmNavbar">

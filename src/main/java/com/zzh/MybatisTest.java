@@ -1,8 +1,10 @@
 package com.zzh;
 
 
+import com.zzh.domain.Activities;
 import com.zzh.domain.Teams;
 import com.zzh.domain.User;
+import com.zzh.mapper.IActivitiesMapper;
 import com.zzh.mapper.IStudentsMapper;
 import com.zzh.mapper.ITeamMapper;
 import com.zzh.mapper.IUserMapper;
@@ -27,6 +29,9 @@ public class MybatisTest {
     @Autowired
     private IUserMapper iUserMapper;
 
+    @Autowired
+    private IActivitiesMapper iActivitiesMapper;
+
     @Test
     public void test() {
 //        List<Students> stus = iStudentsMapper.findAll();
@@ -42,5 +47,42 @@ public class MybatisTest {
         List<Integer> userIds = iTeamMapper.findUserIds(1);
         List<User> this_user = iUserMapper.findByIds(userIds);
         System.out.println(this_user);
+    }
+
+    @Test
+    public void test2(){
+        List<Integer> actid = iActivitiesMapper.findActidByUid(1);
+        List<Activities> acts = iActivitiesMapper.findActByIds(actid);
+        System.out.println(acts);
+        List<Activities> acts1 = iActivitiesMapper.findActByIds1(actid);
+        System.out.println(acts1);
+        List<Activities> acts2 = iActivitiesMapper.findActByIds2(actid);
+        System.out.println(acts2);
+
+    }
+
+    @Test
+    public void test3(){
+        List<Integer> actid = iActivitiesMapper.findActidByTid(1);
+        System.out.println(actid);
+        List<Activities> acts = iActivitiesMapper.findActByIds(actid);
+        System.out.println(acts);
+        List<Activities> acts1 = iActivitiesMapper.findActByIds1(actid);
+        System.out.println(acts1);
+        List<Activities> acts2 = iActivitiesMapper.findActByIds2(actid);
+        System.out.println(acts2);
+
+    }
+
+    @Test
+    public void test4(){
+//        int i = iActivitiesMapper.countUserByActId(3);
+//        System.out.println(i);
+        List<Integer> actid = iActivitiesMapper.findActidByTid(1);
+        List<Integer> is= iActivitiesMapper.countAllUser(actid);
+        List<Integer> fe= iActivitiesMapper.findFeeByIds1(actid);
+
+        System.out.println(is);
+        System.out.println(fe.get(0));
     }
 }

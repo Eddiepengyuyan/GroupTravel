@@ -36,7 +36,7 @@
                             <h4 class="tm-margin-b-20 tm-gold-text">团队名：${teams.name}</h4>
                             <p class="tm-margin-b-20">团长用户名：${leader.username} <br>
                                     团长联系方式：${leader.number}</p>
-                            <input type="hidden" id="teamName_${vs.index}" name="teamName" value="${teams.name}"/>
+                            <input type="hidden" id="teamId_${vs.index}" name="teamId" value="${teams.id}"/>
                             <a href="javascript:submit_team(${vs.index})" class="tm-btn text-uppercase">团队详情</a>
                         </div>
 <%--                        onclick="submit_t(${vs.index})"--%>
