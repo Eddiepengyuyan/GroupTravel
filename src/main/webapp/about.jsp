@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="css/templatemo-style.css">                                   <!-- Templatemo style -->
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<![endif]-->
 </head>
 
 <body>
@@ -131,8 +132,12 @@
 						<h4 class="modal-title" id="myModalLabel">追加缴费</h4>
 					</div>
 					<div class="modal-body">您要追加的费用为：
-						<input type="text" style="margin-left: 20px;margin-right: 20px" id="zj_perfee" class="form-control">元
+						<input type="text" style="margin-left: 5px" id="zj_perfee" class="form-control">元
 					</div>
+					<input type="hidden" id="addUseract1" value="${thisActivity.id}">${thisActivity.id}
+					<input type="hidden" id="addUseruser1" value="${thisUser.id}">${thisUser.id}
+					<input type="hidden" id="teamId1" value="${teamId}"/>${teamId}
+					<input type="hidden" id="thisActTheme1" value="${thisActivity.theme}"/>
 					<div class="modal-footer">
 						<button type="button" class="tm-btn text-uppercase" onclick="add_zjperfee()" data-dismiss="modal">确认</button>
 					</div>
@@ -172,11 +177,11 @@
 </footer>
 
 <%--  导入回传数据jsfiles  --%>
-<script src="js/return.js"></script>
 <!-- load JS files -->
 <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
 <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h -->
 <script src="js/bootstrap.min.js"></script>                 <!-- Bootstrap (http://v4-alpha.getbootstrap.com/) -->
+<script src="js/return.js"></script>
 
 </body>
 </html>

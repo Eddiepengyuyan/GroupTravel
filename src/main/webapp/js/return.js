@@ -111,11 +111,16 @@ function setup(vs){
 
 //追加费用
 function  add_zjperfee(){
-    var addUseract = document.getElementById("addUseract").value;
-    var addUseruser = document.getElementById("addUseruser").value;
+    var addUseract = document.getElementById("addUseract1").value;
+    // alert(addUseract);
+    var addUseruser = document.getElementById("addUseruser1").value;
+    // alert(addUseruser);
     var zj_perfee = document.getElementById("zj_perfee").value;
-    var teamId = document.getElementById("teamId").value;
-    var thisActTheme = document.getElementById("thisActTheme").value;
+    // alert(zj_perfee);
+    var teamId = document.getElementById("teamId1").value;
+    // alert(teamId);
+    var thisActTheme = document.getElementById("thisActTheme1").value;
+    // alert(thisActTheme);
     var url = "add_zjperfee";
     url += "?addUseract="+addUseract+"&addUseruser="+addUseruser+"&zj_perfee="+zj_perfee+"&teamId="+teamId+"&thisActTheme="+thisActTheme;
     window.location = url;
